@@ -145,16 +145,16 @@ section{
 }
 .com-foto > *{position:relative;z-index:2}
 
-.hero.com-foto::before{background-image:url("img/fundo-topo.jpg");opacity:.11}
+.hero.com-foto::before{background-image:url("img/fundo-topo.jpg");opacity:.24}
 [data-fundo="carte"]::before{background-image:url("img/fundo-cardapio.jpg");opacity:.26}
 [data-fundo="passos"]::before{background-image:url("img/fundo-encomendar.jpg");opacity:.17}
 [data-fundo="bia"]::before{background-image:url("img/fundo-bia.jpg");opacity:.20}
-[data-fundo="depo"]::before{background-image:url("img/fundo-depoimentos.jpg");opacity:.10}
+[data-fundo="depo"]::before{background-image:url("img/fundo-depoimentos.jpg");opacity:.22}
 [data-fundo="fecha"]::before{background-image:url("img/fundo-fechamento.jpg");opacity:.18}
 .cabeca{margin-bottom:clamp(2.2rem,5vw,3.2rem)}
 .cabeca.centro{text-align:center}
-.cabeca .eyebrow{margin-bottom:1rem}
-.cabeca p{max-width:48ch;font-size:1.04rem;margin:1.1rem 0 0}
+.cabeca .eyebrow{margin-bottom:1rem;font-size:.82rem}
+.cabeca p{max-width:48ch;font-size:1.18rem;margin:1.1rem 0 0}
 .cabeca.centro p{margin-inline:auto}
 
 /* ---------- SOBRE A BIA ---------- */
@@ -169,13 +169,8 @@ section{
 .retrato img{
   width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:center 22%;
   border-radius:999px 999px var(--r-m) var(--r-m);
-  box-shadow:0 30px 60px rgba(0,0,0,.3);
-}
-.retrato .anel{
-  position:absolute;inset:-14px -14px 14px -14px;
-  border:2px dashed rgba(192,133,82,.5);
-  border-radius:999px 999px calc(var(--r-m) + 8px) calc(var(--r-m) + 8px);
-  pointer-events:none;
+  border:3px solid rgba(243,233,220,.5);
+  box-shadow:0 30px 60px rgba(0,0,0,.32);
 }
 .sobre p{font-size:1.06rem;line-height:1.75;color:#F3E9DC}
 .sobre p + p{margin-top:1rem}
@@ -366,7 +361,7 @@ footer .marca-rodape{
 .bandeja .limpar:hover{color:var(--cream)}
 
 .flutuante{
-  position:fixed;right:20px;bottom:126px;z-index:59;
+  position:fixed;right:20px;bottom:34px;z-index:59;
   width:56px;height:56px;border-radius:50%;background:var(--brownie);
   display:grid;place-content:center;box-shadow:0 12px 28px rgba(94,48,35,.35),0 0 0 3px rgba(243,233,220,.55);
   transition:transform .3s cubic-bezier(.34,1.5,.64,1),background .3s ease;
@@ -419,7 +414,6 @@ footer .marca-rodape{
 }
 @media (max-width:600px){
   .retrato{max-width:250px}
-  .retrato .anel{inset:-10px -10px 10px -10px}
 }
 @media (max-width:600px){
   body{font-size:16px}
@@ -432,7 +426,7 @@ footer .marca-rodape{
   .numeros{gap:1.6rem}
   .bandeja .caixa{justify-content:center;text-align:center;gap:.9rem;padding:1.1rem}
   .bandeja .btn{width:100%}
-  .flutuante{width:50px;height:50px;right:16px;bottom:138px}
+  .flutuante{width:50px;height:50px;right:16px;bottom:150px}
   .flutuante svg{width:24px;height:24px}
 }
 @media (prefers-reduced-motion:reduce){
@@ -603,7 +597,7 @@ footer .marca-rodape{
 </section>
 
 <!-- onda de cobertura -->
-<svg class="onda" data-flutua="-0.05" viewBox="0 0 1200 46" preserveAspectRatio="none" aria-hidden="true">
+<svg class="onda" viewBox="0 0 1200 46" preserveAspectRatio="none" aria-hidden="true">
   <path fill="#895737" d="M0,46 V22 c40,0 40,-20 80,-20 s40,20 80,20 40,-20 80,-20 40,20 80,20 40,-20 80,-20 40,20 80,20 40,-20 80,-20 40,20 80,20 40,-20 80,-20 40,20 80,20 40,-20 80,-20 40,20 80,20 40,-20 80,-20 40,20 80,20 40,-20 80,-20 V46 Z"/>
 </svg>
 
@@ -611,7 +605,6 @@ footer .marca-rodape{
 <section class="sobre tom-cafe com-foto" data-fundo="bia">
   <div class="wrap sobre-grid">
     <div class="retrato revela" data-anim="zoom">
-      <span class="anel" aria-hidden="true"></span>
       <img src="img/bia.jpg" decoding="async" alt="Beatriz, confeiteira responsável pela Doçuras da Bia" loading="lazy" width="608" height="760">
     </div>
     <div class="revela" data-anim="dir">
@@ -631,7 +624,7 @@ footer .marca-rodape{
 </section>
 
 <!-- pingo de calda -->
-<svg class="pingo" data-flutua="0.05" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true">
+<svg class="pingo" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true">
   <path fill="#895737" d="M0,0 H1200 V10 c-30,0 -34,14 -64,14 s-34,-14 -64,-14 -30,22 -60,22 -32,-22 -62,-22 -36,10 -66,10 -30,-10 -60,-10 -34,18 -64,18 -32,-18 -62,-18 -36,14 -66,14 -30,-14 -60,-14 -34,20 -64,20 -32,-20 -62,-20 -36,12 -66,12 -30,-12 -60,-12 -34,16 -64,16 -32,-16 -62,-16 -32,8 -62,8 z"/>
 </svg>
 
@@ -715,13 +708,6 @@ footer .marca-rodape{
     </div>
   </div>
 </section>
-
-<footer>
-  <div class="wrap">
-    <span class="marca-rodape">Doçuras da Bia</span>
-    <p>Feito com carinho em cada detalhe</p>
-  </div>
-</footer>
 
 <!-- ================= BANDEJA ================= -->
 <div class="bandeja" id="bandeja" role="region" aria-label="Seu pedido">
