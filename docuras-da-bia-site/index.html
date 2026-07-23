@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Doçuras da Bia | Bolos caseiros sob encomenda</title>
+<meta name="description" content="Bolos caseiros assados no dia, sob encomenda, por Beatriz. Cenoura com brigadeiro, churros, leite ninho, fubá com goiabada e mais. Peça pelo WhatsApp.">
+<meta name="theme-color" content="#F3E9DC">
+<meta name="color-scheme" content="light only">
+<meta property="og:title" content="Doçuras da Bia | Bolos caseiros sob encomenda">
+<meta property="og:description" content="Sabor que abraça. Cada bolo assado no dia, para uma casa por vez.">
+<meta property="og:type" content="website">
+<link rel="preload" as="image" href="img/logo.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#F3E9DC;
+  --caramel:#C08552;
+  --coffee:#895737;
+  --brownie:#5E3023;
+  --leite:#FFFCF6;
+  --tinta:rgba(94,48,35,.82);
+  --r-g:34px;
+  --r-m:20px;
+  --r-p:12px;
+}
+
+*{box-sizing:border-box}
+html{
+  scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+  color-scheme:light only;
+  background:#F3E9DC;
+}
+body{
+  margin:0;background:#F3E9DC;color:var(--tinta);
+  font-family:'Plus Jakarta Sans',system-ui,sans-serif;
+  font-weight:400;font-size:17px;line-height:1.68;
+  -webkit-font-smoothing:antialiased;
+  padding-bottom:110px;overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{width:min(1160px,90vw);margin-inline:auto;position:relative;z-index:2}
+.estreito{width:min(760px,90vw);margin-inline:auto;position:relative;z-index:2}
+
+/* ---------- TIPOGRAFIA ---------- */
+h1,h2,h3,.display{
+  font-family:'Bricolage Grotesque','Plus Jakarta Sans',sans-serif;
+  font-weight:800;color:var(--brownie);margin:0;
+  line-height:.98;letter-spacing:-.035em;text-wrap:balance;
+}
+h1{font-size:clamp(3.6rem,13vw,8rem)}
+h2{font-size:clamp(2.3rem,6.4vw,4.2rem);line-height:1}
+h3{font-size:1.35rem;line-height:1.12;letter-spacing:-.02em;font-weight:700}
+
+.eyebrow{
+  display:inline-block;font-weight:600;font-size:.7rem;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--caramel);
+}
+
+/* ---------- ELEMENTOS DE CONFEITARIA ---------- */
+.granulado{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.granulado i{
+  position:absolute;display:block;width:16px;height:6px;border-radius:99px;opacity:.5;
+}
+.onda{display:block;width:100%;height:auto;margin-bottom:-2px}
+.pingo{display:block;width:100%;height:auto;margin-top:-2px}
+
+/* ---------- BOTOES ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
+  font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:.98rem;
+  padding:1.15rem 2.2rem;border-radius:99px;border:2px solid transparent;
+  text-decoration:none;cursor:pointer;
+  transition:transform .28s cubic-bezier(.34,1.4,.64,1),box-shadow .28s ease,background .25s ease,color .25s ease;
+}
+.btn-solido{background:var(--brownie);color:var(--cream);box-shadow:0 12px 26px rgba(94,48,35,.24)}
+.btn-solido:hover{transform:translateY(-3px);box-shadow:0 18px 34px rgba(94,48,35,.32)}
+.btn-creme{background:var(--cream);color:var(--brownie)}
+.btn-creme:hover{transform:translateY(-3px);background:var(--leite)}
+.btn-linha{border-color:var(--caramel);color:var(--brownie)}
+.btn-linha:hover{background:var(--caramel);color:var(--leite);transform:translateY(-3px)}
+:focus-visible{outline:3px solid var(--caramel);outline-offset:3px;border-radius:6px}
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;text-align:center;overflow:hidden;
+  padding:clamp(1.8rem,5vw,3rem) 0 clamp(3rem,7vw,4.5rem);
+  background:radial-gradient(120% 90% at 50% 0%,var(--leite) 0%,var(--cream) 62%);
+}
+.logo-topo{
+  width:min(300px,58vw);height:auto;margin:0 auto clamp(.6rem,2vw,1.2rem);
+  filter:drop-shadow(0 16px 32px rgba(94,48,35,.16));
+}
+.hero h1{margin-bottom:.7rem}
+.hero h1 em{font-style:normal;color:var(--caramel)}
+.hero .promessa{max-width:34ch;margin:0 auto;font-size:1.08rem;line-height:1.6}
+
+.chips{
+  list-style:none;margin:2rem auto 0;padding:0;
+  display:flex;gap:.65rem;justify-content:center;flex-wrap:wrap;
+}
+.chips li{
+  display:inline-flex;align-items:center;gap:.45rem;
+  background:var(--leite);border:1.5px solid rgba(192,133,82,.35);
+  padding:.6rem 1.1rem;border-radius:99px;
+  font-weight:600;font-size:.9rem;color:var(--brownie);
+  box-shadow:0 6px 16px rgba(94,48,35,.06);
+}
+.aviso{
+  margin-top:1.8rem;font-size:.82rem;font-weight:500;
+  letter-spacing:.02em;color:var(--coffee);
+}
+
+/* ---------- SECOES ---------- */
+section{
+  padding:clamp(3.2rem,7vw,5.5rem) 0;position:relative;
+  background:#F3E9DC;
+}
+
+/* ---------- COR POR DOBRA ---------- */
+.tom-creme{background:#F3E9DC}
+.tom-areia{background:#EBDCC8}
+.tom-leite{background:#FFFCF6}
+.tom-caramelo{background:#C08552}
+.tom-cafe{background:#895737}
+
+.tom-caramelo h2,.tom-caramelo h3{color:#4A2419}
+.tom-caramelo .cabeca p{color:#4A2419}
+.tom-cafe,.tom-cafe p{color:#F3E9DC}
+.tom-cafe h2,.tom-cafe h3{color:#FFFFFF}
+
+/* rótulo em pílula para ler bem sobre fundo colorido */
+.eyebrow.pilula{
+  background:#FFFCF6;color:var(--coffee);
+  padding:.5rem 1.1rem;border-radius:99px;letter-spacing:.2em;
+}
+
+/* ---------- FOTO DE FUNDO COM TRANSPARENCIA ---------- */
+.com-foto::before{
+  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-size:cover;background-position:center;background-repeat:no-repeat;
+}
+.com-foto > *{position:relative;z-index:2}
+
+.hero.com-foto::before{background-image:url("img/fundo-topo.jpg");opacity:.11}
+[data-fundo="carte"]::before{background-image:url("img/fundo-cardapio.jpg");opacity:.26}
+[data-fundo="passos"]::before{background-image:url("img/fundo-encomendar.jpg");opacity:.17}
+[data-fundo="bia"]::before{background-image:url("img/fundo-bia.jpg");opacity:.20}
+[data-fundo="depo"]::before{background-image:url("img/fundo-depoimentos.jpg");opacity:.10}
+[data-fundo="fecha"]::before{background-image:url("img/fundo-fechamento.jpg");opacity:.18}
+.cabeca{margin-bottom:clamp(2.2rem,5vw,3.2rem)}
+.cabeca.centro{text-align:center}
+.cabeca .eyebrow{margin-bottom:1rem}
+.cabeca p{max-width:48ch;font-size:1.04rem;margin:1.1rem 0 0}
+.cabeca.centro p{margin-inline:auto}
+
+/* ---------- SOBRE A BIA ---------- */
+.sobre{background:var(--coffee);color:#F3E9DC;position:relative;overflow:hidden}
+.sobre h2,.sobre h3{color:#FFFFFF}
+.sobre .eyebrow{color:#F3E9DC;opacity:.8}
+.sobre-grid{
+  display:grid;gap:clamp(2rem,5vw,4rem);
+  grid-template-columns:minmax(0,.85fr) minmax(0,1fr);align-items:center;
+}
+.retrato{position:relative;width:min(320px,100%);margin-inline:auto}
+.retrato img{
+  width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:center 22%;
+  border-radius:999px 999px var(--r-m) var(--r-m);
+  box-shadow:0 30px 60px rgba(0,0,0,.3);
+}
+.retrato .anel{
+  position:absolute;inset:-14px -14px 14px -14px;
+  border:2px dashed rgba(192,133,82,.5);
+  border-radius:999px 999px calc(var(--r-m) + 8px) calc(var(--r-m) + 8px);
+  pointer-events:none;
+}
+.sobre p{font-size:1.06rem;line-height:1.75;color:#F3E9DC}
+.sobre p + p{margin-top:1rem}
+.assinatura{
+  margin-top:1.8rem;display:inline-flex;align-items:center;gap:.8rem;
+  font-family:'Bricolage Grotesque',sans-serif;font-weight:700;
+  font-size:1.6rem;color:#FFFFFF;letter-spacing:-.02em;
+}
+.assinatura::before{content:'';width:44px;height:2px;background:#F3E9DC;border-radius:2px}
+
+.numeros{
+  display:flex;gap:2.4rem;flex-wrap:wrap;margin-top:2.2rem;
+  padding-top:1.8rem;border-top:1px solid rgba(243,233,220,.28);
+}
+.numeros div{min-width:96px}
+.numeros b{
+  display:block;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;
+  font-size:2rem;color:#FFFFFF;line-height:1;letter-spacing:-.03em;
+}
+.numeros span{font-size:.8rem;color:rgba(243,233,220,.85);font-weight:500}
+
+/* ---------- CARDAPIO ---------- */
+.carte{max-width:720px;margin-inline:auto}
+.colecao{
+  background:var(--leite);border-radius:var(--r-g);
+  padding:clamp(1.2rem,3.5vw,2rem);
+  box-shadow:0 16px 44px rgba(94,48,35,.09);
+}
+.colecao + .colecao{margin-top:1.5rem}
+.colecao-topo{
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding:0 .4rem 1rem;margin-bottom:.4rem;
+}
+.colecao-topo .nome{
+  font-family:'Bricolage Grotesque',sans-serif;font-weight:700;
+  font-size:1.28rem;color:var(--brownie);letter-spacing:-.02em;
+}
+.colecao-topo .valor{
+  background:var(--cream);color:var(--coffee);font-weight:700;font-size:.86rem;
+  padding:.42rem .9rem;border-radius:99px;white-space:nowrap;
+}
+
+.sabor{
+  width:100%;display:flex;align-items:center;gap:.9rem;
+  background:none;border:0;border-radius:var(--r-p);
+  padding:1.05rem .8rem;cursor:pointer;text-align:left;
+  font-family:'Plus Jakarta Sans',sans-serif;font-weight:500;font-size:1.06rem;
+  color:var(--brownie);transition:background .25s ease;
+}
+.sabor + .sabor{box-shadow:inset 0 1px 0 rgba(192,133,82,.22)}
+.sabor:hover{background:var(--cream)}
+.sabor .caixa{
+  flex:none;width:26px;height:26px;border-radius:9px;
+  border:2px solid rgba(192,133,82,.55);
+  display:grid;place-content:center;color:transparent;
+  transition:background .28s ease,border-color .28s ease,color .28s ease,transform .35s cubic-bezier(.34,1.5,.64,1);
+}
+.sabor .caixa svg{width:13px;height:13px;display:block}
+.sabor .nome{flex:1;min-width:0}
+.sabor .preco{
+  flex:none;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;
+  font-size:1.06rem;color:var(--coffee);letter-spacing:-.02em;
+}
+.sabor[aria-pressed="true"]{background:var(--cream)}
+.sabor[aria-pressed="true"] .caixa{
+  background:var(--caramel);border-color:var(--caramel);color:var(--leite);transform:scale(1.08);
+}
+.sabor[aria-pressed="true"] .nome{font-weight:600}
+.sabor[aria-pressed="true"] .preco{color:var(--brownie)}
+
+.foto-sabor{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s cubic-bezier(.65,0,.35,1)}
+.foto-sabor > .interna{overflow:hidden}
+.foto-sabor.aberta{grid-template-rows:1fr}
+.foto-sabor figure{margin:0;padding:.4rem .8rem 1.2rem;display:flex;gap:1.3rem;align-items:center}
+.foto-sabor img{
+  width:160px;height:160px;object-fit:cover;flex:none;border-radius:var(--r-m);
+  box-shadow:0 16px 32px rgba(94,48,35,.2);
+}
+.foto-sabor figcaption{font-size:.98rem;line-height:1.6;color:var(--tinta)}
+
+.extra{
+  margin-top:1.5rem;text-align:center;padding:2rem 1.4rem;
+  background:var(--caramel);color:var(--leite);border-radius:var(--r-g);
+}
+.extra .display{color:var(--leite);font-size:1.7rem;display:block;margin-bottom:.35rem}
+.extra p{margin:0;font-size:.98rem;color:rgba(255,252,246,.9)}
+
+/* ---------- PASSOS ---------- */
+.passos{display:grid;gap:1.4rem;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.passo{
+  background:var(--leite);border-radius:var(--r-g);
+  padding:2rem 1.7rem;position:relative;
+  box-shadow:0 14px 36px rgba(94,48,35,.08);
+}
+.passo .icone{
+  width:56px;height:56px;border-radius:18px;background:var(--cream);
+  display:grid;place-content:center;color:var(--coffee);margin-bottom:1.2rem;
+}
+.passo .icone svg{width:28px;height:28px}
+.passo .num{
+  position:absolute;top:1.6rem;right:1.8rem;
+  font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:2.6rem;
+  color:rgba(192,133,82,.22);line-height:1;letter-spacing:-.04em;
+}
+.passo p{margin:.6rem 0 0;font-size:.98rem}
+
+/* ---------- DEPOIMENTOS ---------- */
+.vozes{display:grid;gap:1.4rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.voz{
+  background:var(--leite);border-radius:var(--r-g);padding:2rem 1.7rem;
+  box-shadow:0 14px 36px rgba(94,48,35,.08);display:flex;flex-direction:column;
+}
+.voz .estrelas{color:var(--caramel);letter-spacing:.18em;font-size:.9rem;margin-bottom:1rem}
+.voz p{
+  font-family:'Bricolage Grotesque',sans-serif;font-weight:500;font-size:1.12rem;
+  line-height:1.4;color:var(--brownie);letter-spacing:-.02em;margin:0 0 1.4rem;flex:1;
+}
+.voz span{font-size:.82rem;font-weight:600;color:var(--caramel)}
+
+/* ---------- FAQ ---------- */
+.faq details{
+  background:var(--leite);border-radius:var(--r-m);margin-bottom:.8rem;
+  overflow:hidden;transition:box-shadow .3s ease;
+}
+.faq details[open]{box-shadow:0 14px 32px rgba(94,48,35,.09)}
+.faq summary{
+  cursor:pointer;padding:1.25rem 1.5rem;list-style:none;
+  display:flex;justify-content:space-between;gap:1.4rem;align-items:center;
+  font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1.08rem;
+  color:var(--brownie);letter-spacing:-.02em;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .sinal{
+  flex:none;width:26px;height:26px;border-radius:50%;background:var(--cream);
+  position:relative;transition:background .3s ease;
+}
+.faq summary .sinal::before,.faq summary .sinal::after{
+  content:'';position:absolute;background:var(--coffee);
+  left:50%;top:50%;transform:translate(-50%,-50%);transition:transform .35s ease,opacity .3s ease;
+}
+.faq summary .sinal::before{width:11px;height:2px;border-radius:2px}
+.faq summary .sinal::after{width:2px;height:11px;border-radius:2px}
+.faq details[open] summary .sinal{background:var(--caramel)}
+.faq details[open] summary .sinal::before,.faq details[open] summary .sinal::after{background:var(--leite)}
+.faq details[open] summary .sinal::after{transform:translate(-50%,-50%) rotate(90deg);opacity:0}
+.faq .resposta{padding:0 1.5rem 1.4rem;font-size:.99rem}
+
+/* ---------- FECHAMENTO ---------- */
+.fechamento{
+  background:var(--coffee);color:#F3E9DC;text-align:center;
+  position:relative;overflow:hidden;
+  padding:clamp(2.2rem,4.5vw,3.2rem) 0;
+}
+.fechamento h2{color:#FFFFFF;font-size:clamp(1.8rem,4.4vw,2.6rem)}
+.fechamento .eyebrow{color:#F3E9DC;opacity:.8;font-size:.64rem}
+.fechamento p{max-width:40ch;margin:.9rem auto 1.5rem;color:#F3E9DC;font-size:.96rem}
+.fechamento .btn{padding:.95rem 1.9rem;font-size:.92rem}
+
+footer{text-align:center;padding:1.6rem 0 1rem;font-size:.78rem;color:var(--coffee)}
+footer p{margin:0}
+footer .marca-rodape{
+  font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1.1rem;
+  color:var(--brownie);display:block;margin-bottom:.15rem;letter-spacing:-.03em;
+}
+
+/* ---------- BANDEJA ---------- */
+.bandeja{
+  position:fixed;left:0;right:0;bottom:0;z-index:60;padding:0 0 env(safe-area-inset-bottom);
+  transform:translateY(130%);transition:transform .45s cubic-bezier(.34,1.3,.64,1);
+}
+.bandeja.aberta{transform:translateY(0)}
+.bandeja .caixa{
+  width:min(1160px,94vw);margin:0 auto .9rem;
+  background:var(--coffee);color:var(--cream);
+  border-radius:var(--r-g);padding:1rem 1.3rem;
+  display:flex;align-items:center;justify-content:space-between;gap:1.2rem;flex-wrap:wrap;
+  box-shadow:0 20px 50px rgba(94,48,35,.35);
+}
+.bandeja .resumo{font-size:.84rem;color:rgba(243,233,220,.88);line-height:1.45}
+.bandeja .total{
+  font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1.7rem;
+  color:#FFFFFF;display:block;letter-spacing:-.03em;
+}
+.bandeja .limpar{
+  background:none;border:0;color:rgba(243,233,220,.75);cursor:pointer;
+  font-family:inherit;font-size:.8rem;padding:0;text-decoration:underline;
+}
+.bandeja .limpar:hover{color:var(--cream)}
+
+.flutuante{
+  position:fixed;right:20px;bottom:126px;z-index:59;
+  width:56px;height:56px;border-radius:50%;background:var(--brownie);
+  display:grid;place-content:center;box-shadow:0 12px 28px rgba(94,48,35,.35),0 0 0 3px rgba(243,233,220,.55);
+  transition:transform .3s cubic-bezier(.34,1.5,.64,1),background .3s ease;
+}
+.flutuante:hover{transform:scale(1.09);background:var(--caramel)}
+.flutuante svg{width:27px;height:27px;fill:var(--cream)}
+
+/* ---------- MOVIMENTO ---------- */
+.revela{
+  opacity:0;transform:translateY(30px);
+  transition:opacity .95s cubic-bezier(.22,1,.36,1),transform 1.05s cubic-bezier(.22,1,.36,1);
+  will-change:opacity,transform;
+}
+.revela.visivel{opacity:1;transform:none}
+.revela[data-anim="esq"]{transform:translateX(-34px)}
+.revela[data-anim="dir"]{transform:translateX(34px)}
+.revela[data-anim="zoom"]{transform:scale(.93) translateY(22px)}
+.revela[data-anim="esq"].visivel,
+.revela[data-anim="dir"].visivel,
+.revela[data-anim="zoom"].visivel{transform:none}
+
+/* filhos em cascata */
+.cascata > *{
+  opacity:0;transform:translateY(26px);
+  transition:opacity .85s cubic-bezier(.22,1,.36,1),transform .95s cubic-bezier(.22,1,.36,1);
+}
+.cascata.visivel > *{opacity:1;transform:none}
+.cascata.visivel > *:nth-child(1){transition-delay:.05s}
+.cascata.visivel > *:nth-child(2){transition-delay:.17s}
+.cascata.visivel > *:nth-child(3){transition-delay:.29s}
+.cascata.visivel > *:nth-child(4){transition-delay:.41s}
+
+/* elementos que deslizam com a rolagem */
+[data-flutua]{will-change:transform}
+.onda,.pingo{will-change:transform}
+@keyframes entra{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.hero .logo-topo{animation:entra 1s cubic-bezier(.16,1,.3,1) both}
+.hero h1{animation:entra .9s .18s cubic-bezier(.16,1,.3,1) both}
+.hero .promessa{animation:entra .9s .3s cubic-bezier(.16,1,.3,1) both}
+.hero .chips{animation:entra .9s .42s cubic-bezier(.16,1,.3,1) both}
+.hero .aviso{animation:entra .9s .54s cubic-bezier(.16,1,.3,1) both}
+
+/* ---------- CELULAR ---------- */
+@media (max-width:860px){
+  .sobre-grid{grid-template-columns:1fr;gap:2.4rem}
+  .retrato{max-width:320px;margin-inline:auto}
+  .sobre .cabeca,.sobre-grid > div:last-child{text-align:center}
+  .numeros{justify-content:center;gap:1.8rem}
+  .assinatura{justify-content:center}
+}
+@media (max-width:600px){
+  .retrato{max-width:250px}
+  .retrato .anel{inset:-10px -10px 10px -10px}
+}
+@media (max-width:600px){
+  body{font-size:16px}
+  .chips{gap:.45rem}
+  .chips li{font-size:.78rem;padding:.5rem .8rem;gap:.32rem}
+  .sabor{font-size:1rem;gap:.7rem;padding:.95rem .5rem}
+  .sabor .caixa{width:24px;height:24px}
+  .foto-sabor figure{flex-direction:column;align-items:flex-start;padding:.4rem .5rem 1.2rem}
+  .foto-sabor img{width:100%;height:220px}
+  .numeros{gap:1.6rem}
+  .bandeja .caixa{justify-content:center;text-align:center;gap:.9rem;padding:1.1rem}
+  .bandeja .btn{width:100%}
+  .flutuante{width:50px;height:50px;right:16px;bottom:138px}
+  .flutuante svg{width:24px;height:24px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .revela,.cascata > *{opacity:1!important;transform:none!important}
+  [data-flutua]{transform:none!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<header class="hero com-foto" data-fundo="hero">
+  <div class="granulado" aria-hidden="true" data-flutua="0.10">
+    <i style="top:12%;left:7%;background:#C08552;transform:rotate(28deg)"></i>
+    <i style="top:26%;left:14%;background:#895737;transform:rotate(-42deg)"></i>
+    <i style="top:8%;right:9%;background:#895737;transform:rotate(64deg)"></i>
+    <i style="top:30%;right:6%;background:#C08552;transform:rotate(-18deg)"></i>
+    <i style="bottom:22%;left:5%;background:#C08552;transform:rotate(-70deg)"></i>
+    <i style="bottom:12%;right:12%;background:#5E3023;transform:rotate(35deg);opacity:.3"></i>
+    <i style="top:52%;left:3%;background:#5E3023;transform:rotate(12deg);opacity:.28"></i>
+    <i style="bottom:32%;right:3%;background:#895737;transform:rotate(-55deg)"></i>
+  </div>
+  <div class="wrap">
+    <picture>
+      <source srcset="img/logo.webp" type="image/webp">
+      <img class="logo-topo" src="img/logo.png" alt="Doçuras da Bia, feito com carinho em cada detalhe" width="600" height="620" fetchpriority="high" decoding="async">
+    </picture>
+    <h1>Sabor que <em>abraça</em></h1>
+    <p class="promessa">Bolo caseiro de verdade, assado no dia, uma encomenda por vez.</p>
+
+    <ul class="chips">
+      <li><span>🎂</span>Feito no dia</li>
+      <li><span>🥣</span>Receita de casa</li>
+      <li><span>💬</span>Do seu jeito</li>
+    </ul>
+
+    <p class="aviso">Pedidos com 48h de antecedência &middot; Retirada ou entrega combinada</p>
+  </div>
+</header>
+
+<!-- ================= CARDAPIO ================= -->
+<section id="cardapio" class="tom-areia com-foto" data-fundo="carte">
+  <div class="estreito">
+    <div class="cabeca centro revela">
+      <span class="eyebrow">Cardápio</span>
+      <h2>Escolha os seus</h2>
+      <p>Toque nos sabores que quiser. A gente soma o total e monta a mensagem do pedido pronta para o WhatsApp.</p>
+    </div>
+
+    <div class="carte">
+
+      <div class="colecao revela">
+        <div class="colecao-topo">
+          <span class="nome">Clássicos de tarde</span>
+          <span class="valor">R$ 35,00</span>
+        </div>
+
+        <button class="sabor" aria-pressed="false" data-nome="Banana" data-preco="35">
+          <span class="caixa"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5l3.2 3.2L12 3.8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="nome">Banana</span><span class="preco">R$ 35</span>
+        </button>
+
+        <button class="sabor" aria-pressed="false" data-nome="Fubá com goiabada" data-preco="35">
+          <span class="caixa"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5l3.2 3.2L12 3.8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="nome">Fubá com goiabada</span><span class="preco">R$ 35</span>
+        </button>
+
+        <button class="sabor" aria-pressed="false" data-nome="Milho" data-preco="35">
+          <span class="caixa"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5l3.2 3.2L12 3.8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="nome">Milho</span><span class="preco">R$ 35</span>
+        </button>
+
+        <button class="sabor" aria-pressed="false" data-nome="Laranja" data-preco="35">
+          <span class="caixa"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5l3.2 3.2L12 3.8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="nome">Laranja</span><span class="preco">R$ 35</span>
+        </button>
+      </div>
+
+      <div class="colecao revela">
+        <div class="colecao-topo">
+          <span class="nome">Assinatura da casa</span>
+          <span class="valor">R$ 45,00</span>
+        </div>
+
+        <button class="sabor" aria-pressed="false" data-nome="Cenoura com brigadeiro" data-preco="45" aria-controls="foto-cenoura" aria-expanded="false">
+          <span class="caixa"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5l3.2 3.2L12 3.8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="nome">Cenoura com brigadeiro</span><span class="preco">R$ 45</span>
+        </button>
+        <div class="foto-sabor" id="foto-cenoura">
+          <div class="interna">
+            <figure>
+              <img src="img/bolo-cenoura.jpg" decoding="async" alt="Bolo de cenoura com cobertura de brigadeiro e granulado" loading="lazy">
+              <figcaption>Massa fofinha de cenoura sob uma cobertura cremosa de brigadeiro, com granulado por cima.</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <button class="sabor" aria-pressed="false" data-nome="Coco com cobertura" data-preco="45">
+          <span class="caixa"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5l3.2 3.2L12 3.8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="nome">Coco com cobertura</span><span class="preco">R$ 45</span>
+        </button>
+
+        <button class="sabor" aria-pressed="false" data-nome="Limão" data-preco="45">
+          <span class="caixa"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5l3.2 3.2L12 3.8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="nome">Limão</span><span class="preco">R$ 45</span>
+        </button>
+
+        <button class="sabor" aria-pressed="false" data-nome="Leite ninho" data-preco="45">
+          <span class="caixa"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5l3.2 3.2L12 3.8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="nome">Leite ninho</span><span class="preco">R$ 45</span>
+        </button>
+
+        <button class="sabor" aria-pressed="false" data-nome="Chocolate com cobertura" data-preco="45">
+          <span class="caixa"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5l3.2 3.2L12 3.8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="nome">Chocolate com cobertura</span><span class="preco">R$ 45</span>
+        </button>
+
+        <button class="sabor" aria-pressed="false" data-nome="Churros" data-preco="45">
+          <span class="caixa"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5l3.2 3.2L12 3.8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="nome">Churros</span><span class="preco">R$ 45</span>
+        </button>
+      </div>
+
+      <div class="extra revela">
+        <span class="display">Quer um sabor diferente?</span>
+        <p>É só consultar a disponibilidade com a Bia.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= PASSOS ================= -->
+<section class="tom-caramelo com-foto" data-fundo="passos">
+  <div class="wrap">
+    <div class="cabeca centro revela">
+      <span class="eyebrow pilula">Simples assim</span>
+      <h2>Como encomendar</h2>
+    </div>
+    <div class="passos revela cascata">
+      <div class="passo">
+        <span class="num">01</span>
+        <span class="icone" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3v9a3 3 0 0 0 6 0V3"/><path d="M6.5 3h11"/><path d="M12 15v6"/><path d="M9.5 21h5"/></svg>
+        </span>
+        <h3>Escolha os sabores</h3>
+        <p>Marque no cardápio o que você quer. Pode ser um bolo para o café da tarde ou vários para a festa.</p>
+      </div>
+      <div class="passo">
+        <span class="num">02</span>
+        <span class="icone" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-11.9 7.6L3 21l1.9-5.9A8.4 8.4 0 1 1 21 11.5z"/></svg>
+        </span>
+        <h3>Envie no WhatsApp</h3>
+        <p>A mensagem já sai pronta, com os sabores e o total. Você combina a data e a entrega direto com a Bia.</p>
+      </div>
+      <div class="passo">
+        <span class="num">03</span>
+        <span class="icone" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16v-6a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4z"/><path d="M4 16.5c1.6 0 1.6-1.5 3.2-1.5s1.6 1.5 3.2 1.5 1.6-1.5 3.2-1.5 1.6 1.5 3.2 1.5 1.6-1.5 3.2-1.5"/><path d="M12 10V7"/><path d="M12 5.5a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4z"/></svg>
+        </span>
+        <h3>Receba fresquinho</h3>
+        <p>Seu bolo é assado perto da data combinada e sai do forno para a sua mesa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- onda de cobertura -->
+<svg class="onda" data-flutua="-0.05" viewBox="0 0 1200 46" preserveAspectRatio="none" aria-hidden="true">
+  <path fill="#895737" d="M0,46 V22 c40,0 40,-20 80,-20 s40,20 80,20 40,-20 80,-20 40,20 80,20 40,-20 80,-20 40,20 80,20 40,-20 80,-20 40,20 80,20 40,-20 80,-20 40,20 80,20 40,-20 80,-20 40,20 80,20 40,-20 80,-20 40,20 80,20 40,-20 80,-20 V46 Z"/>
+</svg>
+
+<!-- ================= SOBRE A BIA ================= -->
+<section class="sobre tom-cafe com-foto" data-fundo="bia">
+  <div class="wrap sobre-grid">
+    <div class="retrato revela" data-anim="zoom">
+      <span class="anel" aria-hidden="true"></span>
+      <img src="img/bia.jpg" decoding="async" alt="Beatriz, confeiteira responsável pela Doçuras da Bia" loading="lazy" width="608" height="760">
+    </div>
+    <div class="revela" data-anim="dir">
+      <span class="eyebrow">Quem faz</span>
+      <h2>Oi, eu sou a Bia</h2>
+      <p>Faço bolo caseiro por encomenda, um de cada vez, na minha própria cozinha. Nada de produção em série: a massa vai ao forno perto da data que a gente combina, porque bolo bom é bolo fresco.</p>
+      <p>Não tenho vitrine nem prateleira cheia. Tenho a receita que aprendi em casa, o forno ligado e o seu pedido anotado na agenda da semana.</p>
+      <span class="assinatura">Beatriz</span>
+
+      <div class="numeros">
+        <div><b>10</b><span>sabores no cardápio</span></div>
+        <div><b>48h</b><span>de antecedência</span></div>
+        <div><b>1&nbsp;a&nbsp;1</b><span>feitos à mão</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- pingo de calda -->
+<svg class="pingo" data-flutua="0.05" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true">
+  <path fill="#895737" d="M0,0 H1200 V10 c-30,0 -34,14 -64,14 s-34,-14 -64,-14 -30,22 -60,22 -32,-22 -62,-22 -36,10 -66,10 -30,-10 -60,-10 -34,18 -64,18 -32,-18 -62,-18 -36,14 -66,14 -30,-14 -60,-14 -34,20 -64,20 -32,-20 -62,-20 -36,12 -66,12 -30,-12 -60,-12 -34,16 -64,16 -32,-16 -62,-16 -32,8 -62,8 z"/>
+</svg>
+
+<!-- ================= DEPOIMENTOS ================= -->
+<section class="tom-creme com-foto" data-fundo="depo">
+  <div class="wrap">
+    <div class="cabeca centro revela">
+      <span class="eyebrow">Quem já provou</span>
+      <h2>O que dizem</h2>
+    </div>
+    <div class="vozes revela cascata">
+      <div class="voz">
+        <span class="estrelas" aria-label="cinco estrelas">★★★★★</span>
+        <p>O bolo de cenoura com brigadeiro acabou em dez minutos na festa. Todo mundo pediu o contato.</p>
+        <span>Cliente da Bia</span>
+      </div>
+      <div class="voz">
+        <span class="estrelas" aria-label="cinco estrelas">★★★★★</span>
+        <p>Massa fofinha de verdade, com gosto de bolo de vó. Virou o café da tarde lá de casa.</p>
+        <span>Cliente da Bia</span>
+      </div>
+      <div class="voz">
+        <span class="estrelas" aria-label="cinco estrelas">★★★★★</span>
+        <p>Encomendei na quinta e recebi certinho no sábado. Atendimento carinhoso do começo ao fim.</p>
+        <span>Cliente da Bia</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="tom-areia">
+  <div class="estreito">
+    <div class="cabeca centro revela">
+      <span class="eyebrow">Dúvidas</span>
+      <h2>Antes de encomendar</h2>
+    </div>
+    <div class="faq revela">
+      <details>
+        <summary>Com quanta antecedência preciso pedir?<span class="sinal" aria-hidden="true"></span></summary>
+        <div class="resposta">O ideal é pedir com pelo menos 48 horas. Em datas comemorativas a agenda fecha mais rápido, então quanto antes você confirmar, melhor.</div>
+      </details>
+      <details>
+        <summary>Vocês entregam?<span class="sinal" aria-hidden="true"></span></summary>
+        <div class="resposta">A retirada é combinada no momento do pedido. Para entrega, confirme com a Bia a região e a taxa pelo WhatsApp.</div>
+      </details>
+      <details>
+        <summary>Quais as formas de pagamento?<span class="sinal" aria-hidden="true"></span></summary>
+        <div class="resposta">Pix e dinheiro. A confirmação do pedido acontece assim que o pagamento é combinado.</div>
+      </details>
+      <details>
+        <summary>Posso pedir um sabor que não está no cardápio?<span class="sinal" aria-hidden="true"></span></summary>
+        <div class="resposta">Pode sim. Mande o sabor que você tem em mente e a Bia confere a disponibilidade dos ingredientes e o valor.</div>
+      </details>
+      <details>
+        <summary>Por que não tem bolo de pronta entrega?<span class="sinal" aria-hidden="true"></span></summary>
+        <div class="resposta">Porque cada bolo é feito sob encomenda, perto da data combinada, para chegar fresquinho na sua mesa. Assim ninguém leva um bolo que ficou parado esperando comprador.</div>
+      </details>
+      <details>
+        <summary>Dá para encomendar vários bolos para uma festa?<span class="sinal" aria-hidden="true"></span></summary>
+        <div class="resposta">Dá. Para encomendas maiores, avise a quantidade e a data com alguns dias de antecedência para garantir a agenda.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FECHAMENTO ================= -->
+<section class="fechamento tom-cafe com-foto" data-fundo="fecha">
+  <div class="granulado" aria-hidden="true" data-flutua="0.10">
+    <i style="top:18%;left:8%;background:#F3E9DC;transform:rotate(34deg)"></i>
+    <i style="top:34%;right:10%;background:#5E3023;transform:rotate(-28deg)"></i>
+    <i style="bottom:22%;left:14%;background:#5E3023;transform:rotate(58deg)"></i>
+    <i style="bottom:30%;right:7%;background:#F3E9DC;transform:rotate(-64deg)"></i>
+  </div>
+  <div class="estreito">
+    <div class="revela">
+      <span class="eyebrow">Última chamada</span>
+      <h2>Seu bolo ainda dá tempo</h2>
+      <p>A agenda da semana é limitada porque cada bolo é feito à mão. Garanta o seu e escolha a data.</p>
+      <a class="btn btn-creme" href="https://wa.me/5511961933356?text=Oi%20Beatriz!%20Vi%20o%20site%20e%20quero%20encomendar%20um%20bolo." target="_blank" rel="noopener">Encomendar no WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="marca-rodape">Doçuras da Bia</span>
+    <p>Feito com carinho em cada detalhe</p>
+  </div>
+</footer>
+
+<!-- ================= BANDEJA ================= -->
+<div class="bandeja" id="bandeja" role="region" aria-label="Seu pedido">
+  <div class="caixa">
+    <div>
+      <div class="resumo" id="resumo">Nenhum sabor escolhido</div>
+      <span class="total" id="total">R$ 0,00</span>
+      <button class="limpar" id="limpar" type="button">Limpar seleção</button>
+    </div>
+    <a class="btn btn-creme" id="enviar" href="#" target="_blank" rel="noopener">Enviar pedido no WhatsApp</a>
+  </div>
+</div>
+
+<a class="flutuante" href="https://wa.me/5511961933356?text=Oi%20Beatriz!%20Vi%20o%20site%20e%20quero%20encomendar%20um%20bolo." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.76-1.66-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.06 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12 2a10 10 0 0 0-8.6 15.1L2 22l5.05-1.32A10 10 0 1 0 12 2m0 1.67a8.3 8.3 0 0 1 6.2 13.85 8.3 8.3 0 0 1-10.5 1.4l-.36-.22-3 .78.8-2.92-.24-.38A8.33 8.33 0 0 1 12 3.67"/></svg>
+</a>
+
+<script>
+(function(){
+  var ZAP = '5511961933356';
+  var itens = [];
+  var bandeja = document.getElementById('bandeja');
+  var resumo = document.getElementById('resumo');
+  var total = document.getElementById('total');
+  var enviar = document.getElementById('enviar');
+
+  function moeda(v){ return 'R$ ' + v.toFixed(2).replace('.', ','); }
+
+  function atualizar(){
+    if(!itens.length){
+      bandeja.classList.remove('aberta');
+      resumo.textContent = 'Nenhum sabor escolhido';
+      total.textContent = moeda(0);
+      return;
+    }
+    var soma = itens.reduce(function(s,i){ return s + i.preco; }, 0);
+    var nomes = itens.map(function(i){ return i.nome; }).join(', ');
+    resumo.textContent = itens.length + (itens.length > 1 ? ' bolos: ' : ' bolo: ') + nomes;
+    total.textContent = moeda(soma);
+
+    var linhas = itens.map(function(i){ return '• ' + i.nome + ' (' + moeda(i.preco) + ')'; }).join('\n');
+    var msg = 'Oi Beatriz! Vi o site e quero encomendar:\n\n' + linhas + '\n\nTotal: ' + moeda(soma) + '\n\nPodemos combinar a data?';
+    enviar.href = 'https://wa.me/' + ZAP + '?text=' + encodeURIComponent(msg);
+    bandeja.classList.add('aberta');
+  }
+
+  document.querySelectorAll('.sabor').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var nome = btn.dataset.nome;
+      var preco = parseFloat(btn.dataset.preco);
+      var i = itens.findIndex(function(x){ return x.nome === nome; });
+      var escolhido;
+      if(i > -1){ itens.splice(i,1); escolhido = false; }
+      else { itens.push({nome:nome, preco:preco}); escolhido = true; }
+      btn.setAttribute('aria-pressed', escolhido ? 'true' : 'false');
+
+      var alvo = btn.getAttribute('aria-controls');
+      if(alvo){
+        var painel = document.getElementById(alvo);
+        if(painel){
+          painel.classList.toggle('aberta', escolhido);
+          btn.setAttribute('aria-expanded', escolhido ? 'true' : 'false');
+        }
+      }
+      atualizar();
+    });
+  });
+
+  document.getElementById('limpar').addEventListener('click', function(){
+    itens = [];
+    document.querySelectorAll('.sabor').forEach(function(b){
+      b.setAttribute('aria-pressed','false');
+      if(b.hasAttribute('aria-expanded')) b.setAttribute('aria-expanded','false');
+    });
+    document.querySelectorAll('.foto-sabor').forEach(function(f){ f.classList.remove('aberta'); });
+    atualizar();
+  });
+
+  var suave = !window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* revelação ao entrar na tela */
+  var alvos = document.querySelectorAll('.revela');
+  if(suave && 'IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entradas){
+      entradas.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('visivel'); obs.unobserve(e.target); }
+      });
+    }, {threshold:.1, rootMargin:'0px 0px -60px 0px'});
+    alvos.forEach(function(el){ obs.observe(el); });
+  } else {
+    alvos.forEach(function(el){ el.classList.add('visivel'); });
+  }
+
+  /* deslocamento leve dos elementos decorativos conforme a rolagem */
+  var flutuantes = Array.prototype.slice.call(document.querySelectorAll('[data-flutua]'));
+  if(suave && flutuantes.length){
+    var tick = false;
+    function mover(){
+      var meio = window.innerHeight / 2;
+      flutuantes.forEach(function(el){
+        var r = el.getBoundingClientRect();
+        if(r.bottom < -200 || r.top > window.innerHeight + 200) return;
+        var dist = (r.top + r.height / 2) - meio;
+        var f = parseFloat(el.dataset.flutua) || 0;
+        el.style.transform = 'translate3d(0,' + (dist * f).toFixed(2) + 'px,0)';
+      });
+      tick = false;
+    }
+    window.addEventListener('scroll', function(){
+      if(!tick){ tick = true; window.requestAnimationFrame(mover); }
+    }, {passive:true});
+    window.addEventListener('resize', mover, {passive:true});
+    mover();
+  }
+})();
+</script>
+</body>
+</html>
