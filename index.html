@@ -148,7 +148,10 @@ section{
 }
 .com-foto > *{position:relative;z-index:2}
 
-.hero.com-foto::before{background-image:url("img/fundo-topo.jpg");opacity:1}
+.hero.com-foto::before{
+  background-image:url("img/fundo-topo.jpg");opacity:1;
+  inset:-16px;filter:blur(6px);
+}
 [data-fundo="carte"]::before{background-image:url("img/fundo-cardapio.jpg");opacity:.26}
 [data-fundo="passos"]::before{background-image:url("img/fundo-encomendar.jpg");opacity:.17}
 [data-fundo="bia"]::before{background-image:url("img/fundo-bia.jpg");opacity:.20}
