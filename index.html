@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Doçuras da Bia | Bolos caseiros sob encomenda</title>
-<meta name="description" content="Bolos caseiros assados no dia, sob encomenda, por Beatriz. Cenoura com brigadeiro, churros, leite ninho, fubá com goiabada e mais. Peça pelo WhatsApp.">
+<meta name="description" content="Bolos caseiros assados no dia, sob encomenda, por Beatriz. Atendo Jundiaí e região. Cenoura com brigadeiro, churros, leite ninho, fubá com goiabada e mais. Peça pelo WhatsApp.">
 <meta name="theme-color" content="#F3E9DC">
 <meta name="color-scheme" content="light only">
 <meta property="og:title" content="Doçuras da Bia | Bolos caseiros sob encomenda">
@@ -95,11 +95,22 @@ h3{font-size:1.35rem;line-height:1.12;letter-spacing:-.02em;font-weight:700}
   filter:drop-shadow(0 16px 32px rgba(94,48,35,.16));
 }
 .hero h1{margin-bottom:.7rem}
-.hero h1,.hero .promessa,.hero .aviso{
+.hero h1{
   text-shadow:0 2px 20px rgba(255,252,246,.85),0 1px 4px rgba(255,252,246,.85);
 }
+.hero .aviso{
+  text-shadow:0 1px 2px rgba(255,252,246,.95),0 2px 10px rgba(255,252,246,.95),
+    0 0 26px rgba(255,252,246,.9);
+}
+.hero .promessa{
+  text-shadow:0 1px 2px rgba(255,252,246,.95),0 2px 10px rgba(255,252,246,.95),
+    0 0 26px rgba(255,252,246,.9);
+}
 .hero h1 em{font-style:normal;color:var(--caramel)}
-.hero .promessa{max-width:52ch;margin:0 auto;font-size:1.2rem;line-height:1.62}
+.hero .promessa{
+  max-width:52ch;margin:0 auto;font-size:1.2rem;line-height:1.62;
+  font-weight:600;color:var(--brownie);
+}
 
 .chips{
   list-style:none;margin:2rem auto 0;padding:0;
@@ -113,8 +124,8 @@ h3{font-size:1.35rem;line-height:1.12;letter-spacing:-.02em;font-weight:700}
   box-shadow:0 6px 16px rgba(94,48,35,.06);
 }
 .aviso{
-  margin-top:1.8rem;font-size:.96rem;font-weight:500;
-  letter-spacing:.02em;color:var(--coffee);
+  margin-top:1.8rem;font-size:.96rem;font-weight:600;
+  letter-spacing:.02em;color:var(--brownie);
 }
 
 /* ---------- SECOES ---------- */
@@ -127,11 +138,8 @@ section{
 .tom-creme{background:#F3E9DC}
 .tom-areia{background:#EBDCC8}
 .tom-leite{background:#FFFCF6}
-.tom-caramelo{background:#C08552}
 .tom-cafe{background:#895737}
 
-.tom-caramelo h2,.tom-caramelo h3{color:#4A2419}
-.tom-caramelo .cabeca p{color:#4A2419}
 .tom-cafe,.tom-cafe p{color:#F3E9DC}
 .tom-cafe h2,.tom-cafe h3{color:#FFFFFF}
 
@@ -153,7 +161,6 @@ section{
   inset:-16px;filter:blur(6px);
 }
 [data-fundo="carte"]::before{background-image:url("img/fundo-cardapio.jpg");opacity:.26}
-[data-fundo="passos"]::before{background-image:url("img/fundo-encomendar.jpg");opacity:.17}
 [data-fundo="bia"]::before{background-image:url("img/fundo-bia.jpg");opacity:.20}
 [data-fundo="depo"]::before{background-image:url("img/fundo-depoimentos.jpg");opacity:.22}
 [data-fundo="fecha"]::before{background-image:url("img/fundo-fechamento.jpg");opacity:.18}
@@ -214,11 +221,9 @@ section{
   font-family:'Bricolage Grotesque',sans-serif;font-weight:700;
   font-size:1.28rem;color:var(--brownie);letter-spacing:-.02em;
 }
-.colecao-topo .valor{
-  background:var(--cream);color:var(--coffee);font-weight:700;font-size:.86rem;
-  padding:.42rem .9rem;border-radius:99px;white-space:nowrap;
-}
-
+.linha-sabor{display:flex;align-items:center;gap:.3rem}
+.linha-sabor + .linha-sabor{box-shadow:inset 0 1px 0 rgba(192,133,82,.22)}
+.linha-sabor .sabor{flex:1;min-width:0;border-radius:var(--r-p)}
 .sabor{
   width:100%;display:flex;align-items:center;gap:.9rem;
   background:none;border:0;border-radius:var(--r-p);
@@ -226,8 +231,22 @@ section{
   font-family:'Plus Jakarta Sans',sans-serif;font-weight:500;font-size:1.06rem;
   color:var(--brownie);transition:background .25s ease;
 }
-.sabor + .sabor{box-shadow:inset 0 1px 0 rgba(192,133,82,.22)}
 .sabor:hover{background:var(--cream)}
+
+.stepper{flex:none;display:flex;align-items:center;gap:.5rem;padding:0 .9rem 0 .3rem}
+.stepper[hidden]{display:none}
+.stepper button{
+  width:26px;height:26px;border-radius:50%;flex:none;
+  border:1.5px solid rgba(192,133,82,.55);background:var(--leite);
+  color:var(--brownie);font-size:1.05rem;line-height:1;font-family:inherit;
+  display:grid;place-content:center;cursor:pointer;
+  transition:background .2s ease,border-color .2s ease,color .2s ease;
+}
+.stepper button:hover{background:var(--caramel);border-color:var(--caramel);color:var(--leite)}
+.stepper .qtd{
+  min-width:1.3rem;text-align:center;font-family:'Bricolage Grotesque',sans-serif;
+  font-weight:700;font-size:1.05rem;color:var(--brownie);letter-spacing:-.02em;
+}
 .sabor .caixa{
   flex:none;width:26px;height:26px;border-radius:9px;
   border:2px solid rgba(192,133,82,.55);
@@ -239,7 +258,10 @@ section{
 .sabor .preco{
   flex:none;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;
   font-size:1.06rem;color:var(--coffee);letter-spacing:-.02em;
+  display:none;
 }
+.sabor[aria-pressed="true"] .preco,
+.sabor[aria-expanded="true"] .preco{display:inline-block}
 .sabor[aria-pressed="true"]{background:var(--cream)}
 .sabor[aria-pressed="true"] .caixa{
   background:var(--caramel);border-color:var(--caramel);color:var(--leite);transform:scale(1.08);
@@ -255,7 +277,16 @@ section{
   width:160px;height:160px;object-fit:cover;flex:none;border-radius:var(--r-m);
   box-shadow:0 16px 32px rgba(94,48,35,.2);
 }
+.foto-texto{display:flex;flex-direction:column;gap:.9rem;flex:1;min-width:0}
 .foto-sabor figcaption{font-size:.98rem;line-height:1.6;color:var(--tinta)}
+.incluir-pedido{
+  align-self:flex-start;background:var(--brownie);color:var(--cream);
+  border:0;border-radius:99px;padding:.65rem 1.3rem;
+  font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:.86rem;
+  cursor:pointer;transition:background .25s ease,transform .25s ease;
+}
+.incluir-pedido:hover{background:var(--caramel);transform:translateY(-1px)}
+.incluir-pedido.incluido{background:var(--caramel)}
 
 .extra{
   margin-top:1.5rem;text-align:center;padding:2rem 1.4rem;
@@ -265,24 +296,6 @@ section{
 .extra p{margin:0;font-size:.98rem;color:rgba(255,252,246,.9)}
 
 /* ---------- PASSOS ---------- */
-.passos{display:grid;gap:1.4rem;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
-.passo{
-  background:var(--leite);border-radius:var(--r-g);
-  padding:2rem 1.7rem;position:relative;
-  box-shadow:0 14px 36px rgba(94,48,35,.08);
-}
-.passo .icone{
-  width:56px;height:56px;border-radius:18px;background:var(--cream);
-  display:grid;place-content:center;color:var(--coffee);margin-bottom:1.2rem;
-}
-.passo .icone svg{width:28px;height:28px}
-.passo .num{
-  position:absolute;top:1.6rem;right:1.8rem;
-  font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:2.6rem;
-  color:rgba(192,133,82,.22);line-height:1;letter-spacing:-.04em;
-}
-.passo p{margin:.6rem 0 0;font-size:.98rem}
-
 /* ---------- DEPOIMENTOS ---------- */
 .vozes{display:grid;gap:1.4rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
 .voz{
@@ -367,7 +380,7 @@ footer .marca-rodape{
 .bandeja .limpar:hover{color:var(--cream)}
 
 .flutuante{
-  position:fixed;right:20px;bottom:34px;z-index:59;
+  position:fixed;right:20px;bottom:18px;z-index:59;
   width:56px;height:56px;border-radius:50%;background:#25D366;
   display:grid;place-content:center;box-shadow:0 12px 28px rgba(37,211,102,.4),0 0 0 3px rgba(243,233,220,.55);
   transition:transform .3s cubic-bezier(.34,1.5,.64,1),background .3s ease;
@@ -426,13 +439,15 @@ footer .marca-rodape{
   .chips{gap:.45rem}
   .chips li{font-size:.78rem;padding:.5rem .8rem;gap:.32rem}
   .sabor{font-size:1rem;gap:.7rem;padding:.95rem .5rem}
+  .stepper{gap:.4rem;padding:0 .5rem 0 .2rem}
+  .stepper button{width:24px;height:24px}
   .sabor .caixa{width:24px;height:24px}
   .foto-sabor figure{flex-direction:column;align-items:flex-start;padding:.4rem .5rem 1.2rem}
   .foto-sabor img{width:100%;height:220px}
   .numeros{gap:1.6rem}
   .bandeja .caixa{justify-content:center;text-align:center;gap:.9rem;padding:1.1rem}
   .bandeja .btn{width:100%}
-  .flutuante{width:50px;height:50px;right:16px;bottom:150px}
+  .flutuante{width:50px;height:50px;right:16px;bottom:96px}
   .flutuante svg{width:24px;height:24px}
 }
 @media (prefers-reduced-motion:reduce){
@@ -470,7 +485,7 @@ footer .marca-rodape{
       <li><span>🎁</span>Produção exclusiva para você</li>
     </ul>
 
-    <p class="aviso">Pedidos com 48h de antecedência &middot; Retirada ou entrega combinada</p>
+    <p class="aviso">Atendo Jundiaí e região &middot; Pedidos com 48h de antecedência</p>
   </div>
 </header>
 
@@ -488,73 +503,136 @@ footer .marca-rodape{
       <div class="colecao revela">
         <div class="colecao-topo">
           <span class="nome">Os clássicos</span>
-          <span class="valor">R$ 35,00</span>
         </div>
 
-        <button class="sabor" aria-pressed="false" data-nome="Banana" data-preco="35">
-          <span class="caixa"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5l3.2 3.2L12 3.8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span class="nome">Banana</span><span class="preco">R$ 35</span>
-        </button>
-
-        <button class="sabor" aria-pressed="false" data-nome="Fubá com goiabada" data-preco="35">
-          <span class="caixa"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5l3.2 3.2L12 3.8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span class="nome">Fubá com goiabada</span><span class="preco">R$ 35</span>
-        </button>
-
-        <button class="sabor" aria-pressed="false" data-nome="Milho" data-preco="35">
-          <span class="caixa"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5l3.2 3.2L12 3.8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span class="nome">Milho</span><span class="preco">R$ 35</span>
-        </button>
-
-        <button class="sabor" aria-pressed="false" data-nome="Laranja" data-preco="35">
-          <span class="caixa"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5l3.2 3.2L12 3.8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span class="nome">Laranja</span><span class="preco">R$ 35</span>
-        </button>
+        <div class="linha-sabor">
+          <button class="sabor" aria-pressed="false" data-nome="Banana" data-preco="35">
+            <span class="caixa"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5l3.2 3.2L12 3.8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="nome">Banana</span><span class="preco">R$ 35</span>
+          </button>
+          <div class="stepper" hidden>
+            <button type="button" class="dec" aria-label="Diminuir quantidade de Banana">&minus;</button>
+            <span class="qtd">1</span>
+            <button type="button" class="inc" aria-label="Aumentar quantidade de Banana">+</button>
+          </div>
+        </div>
+        <div class="linha-sabor">
+          <button class="sabor" aria-pressed="false" data-nome="Fubá com goiabada" data-preco="35">
+            <span class="caixa"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5l3.2 3.2L12 3.8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="nome">Fubá com goiabada</span><span class="preco">R$ 35</span>
+          </button>
+          <div class="stepper" hidden>
+            <button type="button" class="dec" aria-label="Diminuir quantidade de Fubá com goiabada">&minus;</button>
+            <span class="qtd">1</span>
+            <button type="button" class="inc" aria-label="Aumentar quantidade de Fubá com goiabada">+</button>
+          </div>
+        </div>
+        <div class="linha-sabor">
+          <button class="sabor" aria-pressed="false" data-nome="Milho" data-preco="35">
+            <span class="caixa"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5l3.2 3.2L12 3.8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="nome">Milho</span><span class="preco">R$ 35</span>
+          </button>
+          <div class="stepper" hidden>
+            <button type="button" class="dec" aria-label="Diminuir quantidade de Milho">&minus;</button>
+            <span class="qtd">1</span>
+            <button type="button" class="inc" aria-label="Aumentar quantidade de Milho">+</button>
+          </div>
+        </div>
+        <div class="linha-sabor">
+          <button class="sabor" aria-pressed="false" data-nome="Laranja" data-preco="35">
+            <span class="caixa"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5l3.2 3.2L12 3.8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="nome">Laranja</span><span class="preco">R$ 35</span>
+          </button>
+          <div class="stepper" hidden>
+            <button type="button" class="dec" aria-label="Diminuir quantidade de Laranja">&minus;</button>
+            <span class="qtd">1</span>
+            <button type="button" class="inc" aria-label="Aumentar quantidade de Laranja">+</button>
+          </div>
+        </div>
       </div>
 
       <div class="colecao revela">
         <div class="colecao-topo">
           <span class="nome">Os mais pedidos</span>
-          <span class="valor">R$ 45,00</span>
         </div>
 
-        <button class="sabor" aria-pressed="false" data-nome="Cenoura com brigadeiro" data-preco="45" aria-controls="foto-cenoura" aria-expanded="false">
-          <span class="caixa"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5l3.2 3.2L12 3.8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span class="nome">Cenoura com brigadeiro</span><span class="preco">R$ 45</span>
-        </button>
+        <div class="linha-sabor">
+          <button class="sabor" aria-pressed="false" data-nome="Cenoura com brigadeiro" data-preco="45" aria-controls="foto-cenoura" aria-expanded="false">
+            <span class="caixa"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5l3.2 3.2L12 3.8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="nome">Cenoura com brigadeiro</span><span class="preco">R$ 45</span>
+          </button>
+          <div class="stepper" hidden>
+            <button type="button" class="dec" aria-label="Diminuir quantidade de Cenoura com brigadeiro">&minus;</button>
+            <span class="qtd">1</span>
+            <button type="button" class="inc" aria-label="Aumentar quantidade de Cenoura com brigadeiro">+</button>
+          </div>
+        </div>
         <div class="foto-sabor" id="foto-cenoura">
           <div class="interna">
             <figure>
               <img src="img/bolo-cenoura.jpg" decoding="async" alt="Bolo de cenoura com cobertura de brigadeiro e granulado" loading="lazy">
-              <figcaption>Massa fofinha de cenoura sob uma cobertura cremosa de brigadeiro, com granulado por cima.</figcaption>
+              <div class="foto-texto">
+                <figcaption>Massa fofinha de cenoura sob uma cobertura cremosa de brigadeiro, com granulado por cima.</figcaption>
+                <button type="button" class="incluir-pedido">Incluir no pedido</button>
+              </div>
             </figure>
           </div>
         </div>
-
-        <button class="sabor" aria-pressed="false" data-nome="Coco com cobertura" data-preco="45">
-          <span class="caixa"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5l3.2 3.2L12 3.8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span class="nome">Coco com cobertura</span><span class="preco">R$ 45</span>
-        </button>
-
-        <button class="sabor" aria-pressed="false" data-nome="Limão" data-preco="45">
-          <span class="caixa"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5l3.2 3.2L12 3.8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span class="nome">Limão</span><span class="preco">R$ 45</span>
-        </button>
-
-        <button class="sabor" aria-pressed="false" data-nome="Leite ninho" data-preco="45">
-          <span class="caixa"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5l3.2 3.2L12 3.8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span class="nome">Leite ninho</span><span class="preco">R$ 45</span>
-        </button>
-
-        <button class="sabor" aria-pressed="false" data-nome="Chocolate com cobertura" data-preco="45">
-          <span class="caixa"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5l3.2 3.2L12 3.8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span class="nome">Chocolate com cobertura</span><span class="preco">R$ 45</span>
-        </button>
-
-        <button class="sabor" aria-pressed="false" data-nome="Churros" data-preco="45">
-          <span class="caixa"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5l3.2 3.2L12 3.8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span class="nome">Churros</span><span class="preco">R$ 45</span>
-        </button>
+        <div class="linha-sabor">
+          <button class="sabor" aria-pressed="false" data-nome="Coco com cobertura" data-preco="45">
+            <span class="caixa"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5l3.2 3.2L12 3.8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="nome">Coco com cobertura</span><span class="preco">R$ 45</span>
+          </button>
+          <div class="stepper" hidden>
+            <button type="button" class="dec" aria-label="Diminuir quantidade de Coco com cobertura">&minus;</button>
+            <span class="qtd">1</span>
+            <button type="button" class="inc" aria-label="Aumentar quantidade de Coco com cobertura">+</button>
+          </div>
+        </div>
+        <div class="linha-sabor">
+          <button class="sabor" aria-pressed="false" data-nome="Limão" data-preco="45">
+            <span class="caixa"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5l3.2 3.2L12 3.8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="nome">Limão</span><span class="preco">R$ 45</span>
+          </button>
+          <div class="stepper" hidden>
+            <button type="button" class="dec" aria-label="Diminuir quantidade de Limão">&minus;</button>
+            <span class="qtd">1</span>
+            <button type="button" class="inc" aria-label="Aumentar quantidade de Limão">+</button>
+          </div>
+        </div>
+        <div class="linha-sabor">
+          <button class="sabor" aria-pressed="false" data-nome="Leite ninho" data-preco="45">
+            <span class="caixa"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5l3.2 3.2L12 3.8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="nome">Leite ninho</span><span class="preco">R$ 45</span>
+          </button>
+          <div class="stepper" hidden>
+            <button type="button" class="dec" aria-label="Diminuir quantidade de Leite ninho">&minus;</button>
+            <span class="qtd">1</span>
+            <button type="button" class="inc" aria-label="Aumentar quantidade de Leite ninho">+</button>
+          </div>
+        </div>
+        <div class="linha-sabor">
+          <button class="sabor" aria-pressed="false" data-nome="Chocolate com cobertura" data-preco="45">
+            <span class="caixa"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5l3.2 3.2L12 3.8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="nome">Chocolate com cobertura</span><span class="preco">R$ 45</span>
+          </button>
+          <div class="stepper" hidden>
+            <button type="button" class="dec" aria-label="Diminuir quantidade de Chocolate com cobertura">&minus;</button>
+            <span class="qtd">1</span>
+            <button type="button" class="inc" aria-label="Aumentar quantidade de Chocolate com cobertura">+</button>
+          </div>
+        </div>
+        <div class="linha-sabor">
+          <button class="sabor" aria-pressed="false" data-nome="Churros" data-preco="45">
+            <span class="caixa"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5l3.2 3.2L12 3.8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="nome">Churros</span><span class="preco">R$ 45</span>
+          </button>
+          <div class="stepper" hidden>
+            <button type="button" class="dec" aria-label="Diminuir quantidade de Churros">&minus;</button>
+            <span class="qtd">1</span>
+            <button type="button" class="inc" aria-label="Aumentar quantidade de Churros">+</button>
+          </div>
+        </div>
       </div>
 
       <div class="extra revela">
@@ -565,47 +643,6 @@ footer .marca-rodape{
     </div>
   </div>
 </section>
-
-<!-- ================= PASSOS ================= -->
-<section class="tom-caramelo com-foto" data-fundo="passos">
-  <div class="wrap">
-    <div class="cabeca centro revela">
-      <span class="eyebrow pilula">Simples assim</span>
-      <h2>Como encomendar</h2>
-    </div>
-    <div class="passos revela cascata">
-      <div class="passo">
-        <span class="num">01</span>
-        <span class="icone" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3v9a3 3 0 0 0 6 0V3"/><path d="M6.5 3h11"/><path d="M12 15v6"/><path d="M9.5 21h5"/></svg>
-        </span>
-        <h3>Escolha os sabores</h3>
-        <p>Marque no cardápio o que você quer. Pode ser um bolo para o café da tarde ou vários para a festa.</p>
-      </div>
-      <div class="passo">
-        <span class="num">02</span>
-        <span class="icone" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-11.9 7.6L3 21l1.9-5.9A8.4 8.4 0 1 1 21 11.5z"/></svg>
-        </span>
-        <h3>Envie no WhatsApp</h3>
-        <p>A mensagem já sai pronta, com os sabores e o total. Você combina a data e a entrega direto com a Bia.</p>
-      </div>
-      <div class="passo">
-        <span class="num">03</span>
-        <span class="icone" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16v-6a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4z"/><path d="M4 16.5c1.6 0 1.6-1.5 3.2-1.5s1.6 1.5 3.2 1.5 1.6-1.5 3.2-1.5 1.6 1.5 3.2 1.5 1.6-1.5 3.2-1.5"/><path d="M12 10V7"/><path d="M12 5.5a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4z"/></svg>
-        </span>
-        <h3>Receba fresquinho</h3>
-        <p>Seu bolo é assado perto da data combinada e sai do forno para a sua mesa.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- onda de cobertura -->
-<svg class="onda" viewBox="0 0 1200 46" preserveAspectRatio="none" aria-hidden="true">
-  <path fill="#895737" d="M0,46 V22 c40,0 40,-20 80,-20 s40,20 80,20 40,-20 80,-20 40,20 80,20 40,-20 80,-20 40,20 80,20 40,-20 80,-20 40,20 80,20 40,-20 80,-20 40,20 80,20 40,-20 80,-20 40,20 80,20 40,-20 80,-20 40,20 80,20 40,-20 80,-20 V46 Z"/>
-</svg>
 
 <!-- ================= SOBRE A BIA ================= -->
 <section class="sobre tom-cafe com-foto" data-fundo="bia">
@@ -644,13 +681,13 @@ footer .marca-rodape{
     <div class="vozes revela cascata">
       <div class="voz">
         <span class="estrelas" aria-label="cinco estrelas">★★★★★</span>
-        <p>O bolo de cenoura com brigadeiro acabou em dez minutos na festa. Todo mundo pediu o contato.</p>
-        <span>Cliente da Bia</span>
+        <p>Seu bolo foi sucesso. Estava uma delícia, muito fofinho 😍</p>
+        <span>Isabella Callegari</span>
       </div>
       <div class="voz">
         <span class="estrelas" aria-label="cinco estrelas">★★★★★</span>
-        <p>Massa fofinha de verdade, com gosto de bolo de vó. Virou o café da tarde lá de casa.</p>
-        <span>Cliente da Bia</span>
+        <p>O bolo ficou perfeito, uma delícia 😋</p>
+        <span>Aparecida Mendes</span>
       </div>
       <div class="voz">
         <span class="estrelas" aria-label="cinco estrelas">★★★★★</span>
@@ -675,7 +712,7 @@ footer .marca-rodape{
       </details>
       <details>
         <summary>Vocês entregam?<span class="sinal" aria-hidden="true"></span></summary>
-        <div class="resposta">A retirada é combinada no momento do pedido. Para entrega, confirme com a Bia a região e a taxa pelo WhatsApp.</div>
+        <div class="resposta">Atendo Jundiaí e região. A retirada é combinada no momento do pedido, e para entrega, confirme com a Bia o bairro e a taxa pelo WhatsApp.</div>
       </details>
       <details>
         <summary>Quais as formas de pagamento?<span class="sinal" aria-hidden="true"></span></summary>
@@ -743,41 +780,133 @@ footer .marca-rodape{
   function moeda(v){ return 'R$ ' + v.toFixed(2).replace('.', ','); }
 
   function atualizar(){
+    document.querySelectorAll('.incluir-pedido').forEach(function(cta){
+      var linha = cta.closest('.foto-sabor').previousElementSibling;
+      var btnSabor = linha.querySelector('.sabor');
+      var incluido = !!encontraItem(btnSabor.dataset.nome);
+      cta.textContent = incluido ? 'Remover do pedido' : 'Incluir no pedido';
+      cta.classList.toggle('incluido', incluido);
+    });
+
     if(!itens.length){
       bandeja.classList.remove('aberta');
       resumo.textContent = 'Nenhum sabor escolhido';
       total.textContent = moeda(0);
       return;
     }
-    var soma = itens.reduce(function(s,i){ return s + i.preco; }, 0);
-    var nomes = itens.map(function(i){ return i.nome; }).join(', ');
-    resumo.textContent = itens.length + (itens.length > 1 ? ' bolos: ' : ' bolo: ') + nomes;
+    var unidades = itens.reduce(function(s,i){ return s + i.qtd; }, 0);
+    var soma = itens.reduce(function(s,i){ return s + i.preco * i.qtd; }, 0);
+    var nomes = itens.map(function(i){ return (i.qtd > 1 ? i.qtd + 'x ' : '') + i.nome; }).join(', ');
+    resumo.textContent = unidades + (unidades > 1 ? ' bolos: ' : ' bolo: ') + nomes;
     total.textContent = moeda(soma);
 
-    var linhas = itens.map(function(i){ return '• ' + i.nome + ' (' + moeda(i.preco) + ')'; }).join('\n');
+    var linhas = itens.map(function(i){
+      return '• ' + (i.qtd > 1 ? i.qtd + 'x ' : '') + i.nome + ' (' + moeda(i.preco * i.qtd) + ')';
+    }).join('\n');
     var msg = 'Oi Beatriz! Vi o site e quero encomendar:\n\n' + linhas + '\n\nTotal: ' + moeda(soma) + '\n\nPodemos combinar a data?';
     enviar.href = 'https://wa.me/' + ZAP + '?text=' + encodeURIComponent(msg);
     bandeja.classList.add('aberta');
   }
 
+  function encontraItem(nome){
+    return itens.find(function(x){ return x.nome === nome; });
+  }
+
+  function definePainel(btn, aberto){
+    var alvo = btn.getAttribute('aria-controls');
+    if(!alvo) return;
+    var painel = document.getElementById(alvo);
+    if(painel){
+      painel.classList.toggle('aberta', aberto);
+      btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+    }
+  }
+
+  function marcaSelecionado(btn){
+    var linha = btn.closest('.linha-sabor');
+    var stepper = linha.querySelector('.stepper');
+    var nome = btn.dataset.nome;
+    var preco = parseFloat(btn.dataset.preco);
+
+    itens.push({nome:nome, preco:preco, qtd:1});
+    btn.setAttribute('aria-pressed','true');
+    btn.classList.add('tem-qtd');
+    stepper.hidden = false;
+    stepper.querySelector('.qtd').textContent = '1';
+    atualizar();
+  }
+
+  function desmarcaSelecionado(btn){
+    var linha = btn.closest('.linha-sabor');
+    var stepper = linha.querySelector('.stepper');
+    var nome = btn.dataset.nome;
+    var i = itens.findIndex(function(x){ return x.nome === nome; });
+    if(i > -1) itens.splice(i,1);
+
+    btn.setAttribute('aria-pressed','false');
+    btn.classList.remove('tem-qtd');
+    stepper.hidden = true;
+    stepper.querySelector('.qtd').textContent = '1';
+    atualizar();
+  }
+
+  /* usadas pelo clique nos sabores sem foto: selecionar tambem fecha/abre o proprio estado da foto (quando existir) */
+  function selecionaUma(btn){ marcaSelecionado(btn); definePainel(btn, true); }
+  function removeToda(btn){ desmarcaSelecionado(btn); definePainel(btn, false); }
+
   document.querySelectorAll('.sabor').forEach(function(btn){
     btn.addEventListener('click', function(){
-      var nome = btn.dataset.nome;
-      var preco = parseFloat(btn.dataset.preco);
-      var i = itens.findIndex(function(x){ return x.nome === nome; });
-      var escolhido;
-      if(i > -1){ itens.splice(i,1); escolhido = false; }
-      else { itens.push({nome:nome, preco:preco}); escolhido = true; }
-      btn.setAttribute('aria-pressed', escolhido ? 'true' : 'false');
-
-      var alvo = btn.getAttribute('aria-controls');
-      if(alvo){
-        var painel = document.getElementById(alvo);
-        if(painel){
-          painel.classList.toggle('aberta', escolhido);
-          btn.setAttribute('aria-expanded', escolhido ? 'true' : 'false');
-        }
+      /* sabores com foto: o clique so abre/fecha a foto, nao inclui no pedido sozinho */
+      if(btn.hasAttribute('aria-controls')){
+        var aberto = btn.getAttribute('aria-expanded') === 'true';
+        definePainel(btn, !aberto);
+        return;
       }
+      var nome = btn.dataset.nome;
+      if(encontraItem(nome)) removeToda(btn);
+      else selecionaUma(btn);
+    });
+  });
+
+  document.querySelectorAll('.incluir-pedido').forEach(function(cta){
+    var painel = cta.closest('.foto-sabor');
+    var linha = painel.previousElementSibling;
+    var btn = linha.querySelector('.sabor');
+
+    function sincroniza(){
+      var incluido = !!encontraItem(btn.dataset.nome);
+      cta.textContent = incluido ? 'Remover do pedido' : 'Incluir no pedido';
+      cta.classList.toggle('incluido', incluido);
+    }
+
+    cta.addEventListener('click', function(){
+      if(encontraItem(btn.dataset.nome)) desmarcaSelecionado(btn);
+      else marcaSelecionado(btn);
+      sincroniza();
+    });
+
+    sincroniza();
+  });
+
+  document.querySelectorAll('.stepper').forEach(function(stepper){
+    var linha = stepper.closest('.linha-sabor');
+    var btn = linha.querySelector('.sabor');
+    var qtdEl = stepper.querySelector('.qtd');
+
+    stepper.querySelector('.inc').addEventListener('click', function(){
+      var item = encontraItem(btn.dataset.nome);
+      if(!item) return;
+      item.qtd = Math.min(item.qtd + 1, 20);
+      qtdEl.textContent = item.qtd;
+      atualizar();
+    });
+
+    stepper.querySelector('.dec').addEventListener('click', function(){
+      var item = encontraItem(btn.dataset.nome);
+      if(!item) return;
+      item.qtd -= 1;
+      if(item.qtd <= 0){ removeToda(btn); return; }
+      qtdEl.textContent = item.qtd;
       atualizar();
     });
   });
@@ -786,9 +915,18 @@ footer .marca-rodape{
     itens = [];
     document.querySelectorAll('.sabor').forEach(function(b){
       b.setAttribute('aria-pressed','false');
+      b.classList.remove('tem-qtd');
       if(b.hasAttribute('aria-expanded')) b.setAttribute('aria-expanded','false');
     });
+    document.querySelectorAll('.stepper').forEach(function(s){
+      s.hidden = true;
+      s.querySelector('.qtd').textContent = '1';
+    });
     document.querySelectorAll('.foto-sabor').forEach(function(f){ f.classList.remove('aberta'); });
+    document.querySelectorAll('.incluir-pedido').forEach(function(c){
+      c.textContent = 'Incluir no pedido';
+      c.classList.remove('incluido');
+    });
     atualizar();
   });
 
