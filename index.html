@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Doçuras da Bia | Bolos caseiros sob encomenda</title>
-<meta name="description" content="Bolos caseiros assados no dia, sob encomenda, por Beatriz. Atendo Jundiaí e região. Cenoura com brigadeiro, churros, leite ninho, fubá com goiabada e mais. Peça pelo WhatsApp.">
+<meta name="description" content="Bolos caseiros assados no dia, sob encomenda, por Beatriz Magoga. Atendo Jundiaí e região. Cenoura com brigadeiro, churros, leite ninho, fubá com goiabada e mais. Peça pelo WhatsApp.">
 <meta name="theme-color" content="#F3E9DC">
 <meta name="color-scheme" content="light only">
 <meta property="og:title" content="Doçuras da Bia | Bolos caseiros sob encomenda">
@@ -90,9 +90,22 @@ h3{font-size:1.35rem;line-height:1.12;letter-spacing:-.02em;font-weight:700}
   padding:clamp(1.8rem,5vw,3rem) 0 clamp(3rem,7vw,4.5rem);
   background:radial-gradient(120% 90% at 50% 0%,var(--leite) 0%,var(--cream) 62%);
 }
+.logo-envolt{
+  position:relative;isolation:isolate;
+  width:min(210px,42vw);margin:0 auto clamp(.5rem,1.6vw,1rem);
+}
+.logo-envolt::before{
+  content:'';position:absolute;z-index:-1;
+  inset:-20% -26%;border-radius:50%;
+  background:radial-gradient(circle,
+    rgba(255,252,246,.94) 0%,
+    rgba(255,252,246,.82) 45%,
+    rgba(255,252,246,.35) 68%,
+    rgba(255,252,246,0) 80%);
+}
 .logo-topo{
-  width:min(210px,42vw);height:auto;margin:0 auto clamp(.5rem,1.6vw,1rem);
-  filter:drop-shadow(0 16px 32px rgba(94,48,35,.16));
+  display:block;width:100%;height:auto;
+  filter:drop-shadow(0 10px 20px rgba(94,48,35,.14));
 }
 .hero h1{margin-bottom:.7rem}
 .hero h1{
@@ -161,7 +174,7 @@ section{
   inset:-16px;filter:blur(6px);
 }
 [data-fundo="carte"]::before{background-image:url("img/fundo-cardapio.jpg");opacity:.26}
-[data-fundo="bia"]::before{background-image:url("img/fundo-bia.jpg");opacity:.20}
+[data-fundo="bia"]::before{background-image:url("img/fundo-bia.jpg");opacity:.38}
 [data-fundo="depo"]::before{background-image:url("img/fundo-depoimentos.jpg");opacity:.22}
 [data-fundo="fecha"]::before{background-image:url("img/fundo-fechamento.jpg");opacity:.18}
 .cabeca{margin-bottom:clamp(2.2rem,5vw,3.2rem)}
@@ -176,8 +189,9 @@ section{
 .sobre .eyebrow{color:#F3E9DC;opacity:.8}
 .sobre-grid{
   display:grid;gap:clamp(2rem,5vw,4rem);
-  grid-template-columns:minmax(0,.85fr) minmax(0,1fr);align-items:center;
+  grid-template-columns:minmax(0,.85fr) minmax(0,1fr);align-items:start;
 }
+.retrato{position:sticky;top:2.5rem}
 .retrato{position:relative;width:min(320px,100%);margin-inline:auto}
 .retrato img{
   width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:center 22%;
@@ -193,17 +207,6 @@ section{
   font-size:1.6rem;color:#FFFFFF;letter-spacing:-.02em;
 }
 .assinatura::before{content:'';width:44px;height:2px;background:#F3E9DC;border-radius:2px}
-
-.numeros{
-  display:flex;gap:2.4rem;flex-wrap:wrap;margin-top:2.2rem;
-  padding-top:1.8rem;border-top:1px solid rgba(243,233,220,.28);
-}
-.numeros div{min-width:96px}
-.numeros b{
-  display:block;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;
-  font-size:2rem;color:#FFFFFF;line-height:1;letter-spacing:-.03em;
-}
-.numeros span{font-size:.8rem;color:rgba(243,233,220,.85);font-weight:500}
 
 /* ---------- CARDAPIO ---------- */
 .carte{max-width:720px;margin-inline:auto}
@@ -426,9 +429,8 @@ footer .marca-rodape{
 /* ---------- CELULAR ---------- */
 @media (max-width:860px){
   .sobre-grid{grid-template-columns:1fr;gap:2.4rem}
-  .retrato{max-width:320px;margin-inline:auto}
+  .retrato{max-width:320px;margin-inline:auto;position:static}
   .sobre .cabeca,.sobre-grid > div:last-child{text-align:center}
-  .numeros{justify-content:center;gap:1.8rem}
   .assinatura{justify-content:center}
 }
 @media (max-width:600px){
@@ -444,7 +446,6 @@ footer .marca-rodape{
   .sabor .caixa{width:24px;height:24px}
   .foto-sabor figure{flex-direction:column;align-items:flex-start;padding:.4rem .5rem 1.2rem}
   .foto-sabor img{width:100%;height:220px}
-  .numeros{gap:1.6rem}
   .bandeja .caixa{justify-content:center;text-align:center;gap:.9rem;padding:1.1rem}
   .bandeja .btn{width:100%}
   .flutuante{width:50px;height:50px;right:16px;bottom:96px}
@@ -472,10 +473,12 @@ footer .marca-rodape{
     <i style="bottom:32%;right:3%;background:#895737;transform:rotate(-55deg)"></i>
   </div>
   <div class="wrap">
-    <picture>
-      <source srcset="img/logo.webp" type="image/webp">
-      <img class="logo-topo" src="img/logo.png" alt="Doçuras da Bia, feito com carinho em cada detalhe" width="600" height="620" fetchpriority="high" decoding="async">
-    </picture>
+    <div class="logo-envolt">
+      <picture>
+        <source srcset="img/logo.webp" type="image/webp">
+        <img class="logo-topo" src="img/logo.png" alt="Doçuras da Bia, feito com carinho em cada detalhe" width="600" height="620" fetchpriority="high" decoding="async">
+      </picture>
+    </div>
     <h1>Sabor que <em>abraça</em></h1>
     <p class="promessa">Nada de produção em escala e bolo massudo. Aqui você é único. Nossos bolos são 100% caseiros, assados no dia e feitos exclusivamente para você.</p>
 
@@ -648,20 +651,15 @@ footer .marca-rodape{
 <section class="sobre tom-cafe com-foto" data-fundo="bia">
   <div class="wrap sobre-grid">
     <div class="retrato revela" data-anim="zoom">
-      <img src="img/bia.jpg" decoding="async" alt="Beatriz, confeiteira responsável pela Doçuras da Bia" loading="lazy" width="608" height="760">
+      <img src="img/bia.jpg" decoding="async" alt="Beatriz Magoga, confeiteira responsável pela Doçuras da Bia" loading="lazy" width="608" height="760">
     </div>
     <div class="revela" data-anim="dir">
       <span class="eyebrow">Quem faz</span>
-      <h2>Oi, eu sou a Bia</h2>
-      <p>Faço bolo caseiro por encomenda, um de cada vez, na minha própria cozinha. Nada de produção em série: a massa vai ao forno perto da data que a gente combina, porque bolo bom é bolo fresco.</p>
-      <p>Não tenho vitrine nem prateleira cheia. Tenho a receita que aprendi em casa, o forno ligado e o seu pedido anotado na agenda da semana.</p>
-      <span class="assinatura">Beatriz</span>
-
-      <div class="numeros">
-        <div><b>10</b><span>sabores no cardápio</span></div>
-        <div><b>48h</b><span>de antecedência</span></div>
-        <div><b>1&nbsp;a&nbsp;1</b><span>feitos à mão</span></div>
-      </div>
+      <h2>Oi, eu sou a Bia!</h2>
+      <p>Sou casada e sempre gostei de preparar doces para as festas e os encontros da minha família.</p>
+      <p>Foi resgatando receitas de família que comecei a fazer meus primeiros bolos. As pessoas gostaram, começaram a encomendar e esse carinho se transformou no meu trabalho.</p>
+      <p>Hoje, preparo cada bolo como se fosse para a minha própria família: com cuidado, afeto e o desejo de tornar cada momento ainda mais especial.</p>
+      <span class="assinatura">Beatriz Magoga</span>
     </div>
   </div>
 </section>
