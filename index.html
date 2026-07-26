@@ -90,22 +90,9 @@ h3{font-size:1.35rem;line-height:1.12;letter-spacing:-.02em;font-weight:700}
   padding:clamp(1.8rem,5vw,3rem) 0 clamp(3rem,7vw,4.5rem);
   background:radial-gradient(120% 90% at 50% 0%,var(--leite) 0%,var(--cream) 62%);
 }
-.logo-envolt{
-  position:relative;isolation:isolate;
-  width:min(210px,42vw);margin:0 auto clamp(.5rem,1.6vw,1rem);
-}
-.logo-envolt::before{
-  content:'';position:absolute;z-index:-1;
-  inset:-20% -26%;border-radius:50%;
-  background:radial-gradient(circle,
-    rgba(255,252,246,.94) 0%,
-    rgba(255,252,246,.82) 45%,
-    rgba(255,252,246,.35) 68%,
-    rgba(255,252,246,0) 80%);
-}
 .logo-topo{
-  display:block;width:100%;height:auto;
-  filter:drop-shadow(0 10px 20px rgba(94,48,35,.14));
+  width:min(210px,42vw);height:auto;margin:0 auto clamp(.5rem,1.6vw,1rem);
+  filter:drop-shadow(0 16px 32px rgba(94,48,35,.16));
 }
 .hero h1{margin-bottom:.7rem}
 .hero h1{
@@ -473,12 +460,10 @@ footer .marca-rodape{
     <i style="bottom:32%;right:3%;background:#895737;transform:rotate(-55deg)"></i>
   </div>
   <div class="wrap">
-    <div class="logo-envolt">
-      <picture>
-        <source srcset="img/logo.webp" type="image/webp">
-        <img class="logo-topo" src="img/logo.png" alt="Doçuras da Bia, feito com carinho em cada detalhe" width="600" height="620" fetchpriority="high" decoding="async">
-      </picture>
-    </div>
+    <picture>
+      <source srcset="img/logo.webp" type="image/webp">
+      <img class="logo-topo" src="img/logo.png" alt="Doçuras da Bia, feito com carinho em cada detalhe" width="600" height="620" fetchpriority="high" decoding="async">
+    </picture>
     <h1>Sabor que <em>abraça</em></h1>
     <p class="promessa">Nada de produção em escala e bolo massudo. Aqui você é único. Nossos bolos são 100% caseiros, assados no dia e feitos exclusivamente para você.</p>
 
