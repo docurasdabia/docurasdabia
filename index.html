@@ -196,7 +196,7 @@ section{
 .assinatura::before{content:'';width:44px;height:2px;background:#F3E9DC;border-radius:2px}
 
 /* ---------- CARDAPIO ---------- */
-.carte{max-width:720px;margin-inline:auto}
+.carte{max-width:1080px;margin-inline:auto}
 .colecao{
   background:var(--leite);border-radius:var(--r-g);
   padding:clamp(1.2rem,3.5vw,2rem);
@@ -211,72 +211,102 @@ section{
   font-family:'Bricolage Grotesque',sans-serif;font-weight:700;
   font-size:1.28rem;color:var(--brownie);letter-spacing:-.02em;
 }
-.linha-sabor{display:flex;align-items:center;gap:.3rem}
-.linha-sabor + .linha-sabor{box-shadow:inset 0 1px 0 rgba(192,133,82,.22)}
-.linha-sabor .sabor{flex:1;min-width:0;border-radius:var(--r-p)}
-.sabor{
-  width:100%;display:flex;align-items:center;gap:.9rem;
-  background:none;border:0;border-radius:var(--r-p);
-  padding:1.05rem .8rem;cursor:pointer;text-align:left;
-  font-family:'Plus Jakarta Sans',sans-serif;font-weight:500;font-size:1.06rem;
-  color:var(--brownie);transition:background .25s ease;
-}
-.sabor:hover{background:var(--cream)}
 
-.stepper{flex:none;display:flex;align-items:center;gap:.5rem;padding:0 .9rem 0 .3rem}
-.stepper[hidden]{display:none}
-.stepper button{
-  width:26px;height:26px;border-radius:50%;flex:none;
-  border:1.5px solid rgba(192,133,82,.55);background:var(--leite);
+/* ---------- GRADE DE PRATOS (estilo cartao) ---------- */
+.grade-pratos{
+  display:grid;gap:1.4rem;
+  grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+}
+.prato{
+  background:var(--leite);border-radius:var(--r-m);overflow:hidden;
+  box-shadow:0 10px 28px rgba(94,48,35,.08);
+  display:flex;flex-direction:column;
+  transition:box-shadow .25s ease,transform .25s ease;
+}
+.prato:hover{box-shadow:0 16px 36px rgba(94,48,35,.14);transform:translateY(-2px)}
+
+.prato-foto{position:relative;aspect-ratio:4/3;background:var(--cream);overflow:hidden}
+.prato-foto img{width:100%;height:100%;object-fit:cover;display:block}
+.prato-foto.sem-foto{
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(150deg,var(--areia) 0%,var(--cream) 100%);
+}
+.marca-placeholder{
+  display:flex;flex-direction:column;align-items:center;gap:.5rem;
+  color:rgba(137,87,55,.45);
+}
+.marca-placeholder svg{width:38px;height:38px}
+.marca-placeholder span{
+  font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+}
+
+.badge-ampliar{
+  position:absolute;top:.6rem;right:.6rem;z-index:2;
+  background:rgba(255,252,246,.92);color:var(--brownie);border:0;
+  font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:.74rem;
+  padding:.4rem .8rem;border-radius:99px;cursor:pointer;
+  box-shadow:0 4px 12px rgba(94,48,35,.15);
+  transition:background .2s ease,transform .2s ease;
+}
+.badge-ampliar:hover{background:var(--leite);transform:translateY(-1px)}
+
+.prato-corpo{padding:1.1rem 1.2rem 1.3rem;display:flex;flex-direction:column;gap:.5rem;flex:1}
+.prato-corpo h3{
+  font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1.1rem;
+  color:var(--brownie);letter-spacing:-.02em;margin:0;
+}
+.prato-corpo p{
+  font-size:.9rem;line-height:1.55;color:var(--tinta);margin:0;flex:1;
+}
+.prato-rodape{
+  display:flex;align-items:center;justify-content:space-between;gap:.8rem;
+  margin-top:.5rem;padding-top:.9rem;border-top:1px dashed rgba(192,133,82,.28);
+}
+.prato-preco{
+  font-family:'Bricolage Grotesque',sans-serif;font-weight:700;
+  font-size:1.05rem;color:var(--coffee);letter-spacing:-.02em;
+}
+
+.stepper-card{flex:none;display:flex;align-items:center;gap:.55rem}
+.stepper-card button{
+  width:28px;height:28px;border-radius:50%;flex:none;
+  border:1.5px solid rgba(192,133,82,.55);background:var(--cream);
   color:var(--brownie);font-size:1.05rem;line-height:1;font-family:inherit;
   display:grid;place-content:center;cursor:pointer;
   transition:background .2s ease,border-color .2s ease,color .2s ease;
 }
-.stepper button:hover{background:var(--caramel);border-color:var(--caramel);color:var(--leite)}
-.stepper .qtd{
-  min-width:1.3rem;text-align:center;font-family:'Bricolage Grotesque',sans-serif;
-  font-weight:700;font-size:1.05rem;color:var(--brownie);letter-spacing:-.02em;
+.stepper-card button:hover{background:var(--caramel);border-color:var(--caramel);color:var(--leite)}
+.stepper-card .qtd{
+  min-width:1.2rem;text-align:center;font-family:'Bricolage Grotesque',sans-serif;
+  font-weight:700;font-size:1.02rem;color:var(--brownie);letter-spacing:-.02em;
 }
-.sabor .caixa{
-  flex:none;width:26px;height:26px;border-radius:9px;
-  border:2px solid rgba(192,133,82,.55);
-  display:grid;place-content:center;color:transparent;
-  transition:background .28s ease,border-color .28s ease,color .28s ease,transform .35s cubic-bezier(.34,1.5,.64,1);
-}
-.sabor .caixa svg{width:13px;height:13px;display:block}
-.sabor .nome{flex:1;min-width:0}
-.sabor .preco{
-  flex:none;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;
-  font-size:1.06rem;color:var(--coffee);letter-spacing:-.02em;
-  display:none;
-}
-.sabor[aria-pressed="true"] .preco,
-.sabor[aria-expanded="true"] .preco{display:inline-block}
-.sabor[aria-pressed="true"]{background:var(--cream)}
-.sabor[aria-pressed="true"] .caixa{
-  background:var(--caramel);border-color:var(--caramel);color:var(--leite);transform:scale(1.08);
-}
-.sabor[aria-pressed="true"] .nome{font-weight:600}
-.sabor[aria-pressed="true"] .preco{color:var(--brownie)}
+.prato.no-carrinho{box-shadow:0 0 0 2px var(--caramel),0 16px 36px rgba(94,48,35,.14)}
 
-.foto-sabor{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s cubic-bezier(.65,0,.35,1)}
-.foto-sabor > .interna{overflow:hidden}
-.foto-sabor.aberta{grid-template-rows:1fr}
-.foto-sabor figure{margin:0;padding:.4rem .8rem 1.2rem;display:flex;gap:1.3rem;align-items:center}
-.foto-sabor img{
-  width:160px;height:160px;object-fit:cover;flex:none;border-radius:var(--r-m);
-  box-shadow:0 16px 32px rgba(94,48,35,.2);
+/* ---------- LIGHTBOX DO PRATO ---------- */
+.lightbox-prato{
+  position:fixed;inset:0;z-index:80;display:none;align-items:center;justify-content:center;padding:1.4rem;
 }
-.foto-texto{display:flex;flex-direction:column;gap:.9rem;flex:1;min-width:0}
-.foto-sabor figcaption{font-size:.98rem;line-height:1.6;color:var(--tinta)}
-.incluir-pedido{
-  align-self:flex-start;background:var(--brownie);color:var(--cream);
-  border:0;border-radius:99px;padding:.65rem 1.3rem;
-  font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:.86rem;
-  cursor:pointer;transition:background .25s ease,transform .25s ease;
+.lightbox-prato.aberto{display:flex}
+.lightbox-veu{position:absolute;inset:0;background:rgba(46,28,17,.6);backdrop-filter:blur(2px)}
+.lightbox-conteudo{
+  position:relative;z-index:1;background:var(--leite);border-radius:var(--r-g);
+  max-width:520px;width:100%;max-height:90vh;overflow:auto;
+  box-shadow:0 30px 60px rgba(0,0,0,.3);
 }
-.incluir-pedido:hover{background:var(--caramel);transform:translateY(-1px)}
-.incluir-pedido.incluido{background:var(--caramel)}
+.lightbox-conteudo img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.lightbox-texto{padding:1.4rem 1.6rem 1.6rem}
+.lightbox-texto h3{
+  font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1.3rem;
+  color:var(--brownie);margin:0 0 .5rem;letter-spacing:-.02em;
+}
+.lightbox-texto p{font-size:.98rem;line-height:1.6;color:var(--tinta);margin:0}
+.lightbox-fechar{
+  position:absolute;top:.8rem;right:.8rem;z-index:2;
+  width:36px;height:36px;border-radius:50%;border:0;cursor:pointer;
+  background:rgba(255,252,246,.92);color:var(--brownie);
+  display:grid;place-content:center;box-shadow:0 4px 12px rgba(94,48,35,.15);
+}
+.lightbox-fechar svg{width:16px;height:16px}
 
 .extra{
   margin-top:1.5rem;text-align:center;padding:2rem 1.4rem;
@@ -427,12 +457,9 @@ footer .marca-rodape{
   body{font-size:16px}
   .chips{gap:.45rem}
   .chips li{font-size:.78rem;padding:.5rem .8rem;gap:.32rem}
-  .sabor{font-size:1rem;gap:.7rem;padding:.95rem .5rem}
-  .stepper{gap:.4rem;padding:0 .5rem 0 .2rem}
-  .stepper button{width:24px;height:24px}
-  .sabor .caixa{width:24px;height:24px}
-  .foto-sabor figure{flex-direction:column;align-items:flex-start;padding:.4rem .5rem 1.2rem}
-  .foto-sabor img{width:100%;height:220px}
+  .grade-pratos{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1rem}
+  .prato-corpo{padding:.9rem 1rem 1.1rem}
+  .stepper-card button{width:26px;height:26px}
   .bandeja .caixa{justify-content:center;text-align:center;gap:.9rem;padding:1.1rem}
   .bandeja .btn{width:100%}
   .flutuante{width:50px;height:50px;right:16px;bottom:96px}
@@ -479,11 +506,11 @@ footer .marca-rodape{
 
 <!-- ================= CARDAPIO ================= -->
 <section id="cardapio" class="tom-areia com-foto" data-fundo="carte">
-  <div class="estreito">
+  <div class="wrap">
     <div class="cabeca centro revela">
       <span class="eyebrow">Cardápio</span>
       <h2>Escolha os seus</h2>
-      <p>Toque nos sabores que quiser. A gente soma o total e monta a mensagem do pedido pronta para o WhatsApp.</p>
+      <p>Toque no + para adicionar. A gente soma o total e monta a mensagem do pedido pronta para o WhatsApp.</p>
     </div>
 
     <div class="carte">
@@ -492,61 +519,85 @@ footer .marca-rodape{
         <div class="colecao-topo">
           <span class="nome">Os clássicos</span>
         </div>
-
-        <div class="linha-sabor">
-          <button class="sabor" aria-pressed="false" data-nome="Banana" data-preco="35">
-            <span class="caixa"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5l3.2 3.2L12 3.8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <span class="nome">Banana</span><span class="preco">R$ 35</span>
-          </button>
-          <div class="stepper" hidden>
-            <button type="button" class="dec" aria-label="Diminuir quantidade de Banana">&minus;</button>
-            <span class="qtd">1</span>
-            <button type="button" class="inc" aria-label="Aumentar quantidade de Banana">+</button>
+        <div class="grade-pratos">
+        <div class="prato" data-colecao="classicos">
+          <div class="prato-foto sem-foto">
+            <span class="marca-placeholder" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 26c0-4 3-6 6-6 1-4 5-7 10-7s9 3 10 7c3 0 6 2 6 6"/><path d="M8 26v8a3 3 0 0 0 3 3h26a3 3 0 0 0 3-3v-8"/><path d="M8 26h32"/><path d="M24 13V8"/><circle cx="24" cy="6" r="1.6" fill="currentColor" stroke="none"/></svg>
+            <span>Foto em breve</span>
+          </span>
           </div>
-        </div>
-        <div class="linha-sabor">
-          <button class="sabor" aria-pressed="false" data-nome="Fubá com goiabada" data-preco="35" aria-controls="foto-fuba" aria-expanded="false">
-            <span class="caixa"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5l3.2 3.2L12 3.8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <span class="nome">Fubá com goiabada</span><span class="preco">R$ 35</span>
-          </button>
-          <div class="stepper" hidden>
-            <button type="button" class="dec" aria-label="Diminuir quantidade de Fubá com goiabada">&minus;</button>
-            <span class="qtd">1</span>
-            <button type="button" class="inc" aria-label="Aumentar quantidade de Fubá com goiabada">+</button>
-          </div>
-        </div>
-        <div class="foto-sabor" id="foto-fuba">
-          <div class="interna">
-            <figure>
-              <img src="img/bolo-fuba-goiabada.jpg" decoding="async" alt="Bolo de fubá em formato de anel, coberto com calda brilhante de goiabada" loading="lazy">
-              <div class="foto-texto">
-                <figcaption>Bolo de fubá fofinho, coberto com uma calda brilhante de goiabada.</figcaption>
-                <button type="button" class="incluir-pedido">Incluir no pedido</button>
+          <div class="prato-corpo">
+            <h3>Banana</h3>
+            <p>Bolo fofinho de banana, feito com receita de família. Simples e gostoso do jeito que a gente ama.</p>
+            <div class="prato-rodape">
+              <span class="prato-preco">R$ 35</span>
+              <div class="stepper-card" data-nome="Banana" data-preco="35">
+                <button type="button" class="dec" aria-label="Diminuir quantidade de Banana">&minus;</button>
+                <span class="qtd">0</span>
+                <button type="button" class="inc" aria-label="Aumentar quantidade de Banana">+</button>
               </div>
-            </figure>
+            </div>
           </div>
         </div>
-        <div class="linha-sabor">
-          <button class="sabor" aria-pressed="false" data-nome="Milho" data-preco="35">
-            <span class="caixa"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5l3.2 3.2L12 3.8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <span class="nome">Milho</span><span class="preco">R$ 35</span>
-          </button>
-          <div class="stepper" hidden>
-            <button type="button" class="dec" aria-label="Diminuir quantidade de Milho">&minus;</button>
-            <span class="qtd">1</span>
-            <button type="button" class="inc" aria-label="Aumentar quantidade de Milho">+</button>
+        <div class="prato" data-colecao="classicos">
+          <div class="prato-foto">
+            <img src="img/bolo-fuba-goiabada.jpg" alt="Bolo de fubá em formato de anel, coberto com calda brilhante de goiabada" loading="lazy" decoding="async">
+          <button type="button" class="badge-ampliar" data-alvo="fuba-com-goiabada">Ampliar</button>
+          </div>
+          <div class="prato-corpo">
+            <h3>Fubá com goiabada</h3>
+            <p>Bolo de fubá fofinho, coberto com uma calda brilhante de goiabada.</p>
+            <div class="prato-rodape">
+              <span class="prato-preco">R$ 35</span>
+              <div class="stepper-card" data-nome="Fubá com goiabada" data-preco="35">
+                <button type="button" class="dec" aria-label="Diminuir quantidade de Fubá com goiabada">&minus;</button>
+                <span class="qtd">0</span>
+                <button type="button" class="inc" aria-label="Aumentar quantidade de Fubá com goiabada">+</button>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="linha-sabor">
-          <button class="sabor" aria-pressed="false" data-nome="Laranja" data-preco="35">
-            <span class="caixa"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5l3.2 3.2L12 3.8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <span class="nome">Laranja</span><span class="preco">R$ 35</span>
-          </button>
-          <div class="stepper" hidden>
-            <button type="button" class="dec" aria-label="Diminuir quantidade de Laranja">&minus;</button>
-            <span class="qtd">1</span>
-            <button type="button" class="inc" aria-label="Aumentar quantidade de Laranja">+</button>
+        <div class="prato" data-colecao="classicos">
+          <div class="prato-foto sem-foto">
+            <span class="marca-placeholder" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 26c0-4 3-6 6-6 1-4 5-7 10-7s9 3 10 7c3 0 6 2 6 6"/><path d="M8 26v8a3 3 0 0 0 3 3h26a3 3 0 0 0 3-3v-8"/><path d="M8 26h32"/><path d="M24 13V8"/><circle cx="24" cy="6" r="1.6" fill="currentColor" stroke="none"/></svg>
+            <span>Foto em breve</span>
+          </span>
           </div>
+          <div class="prato-corpo">
+            <h3>Milho</h3>
+            <p>Bolo cremoso de milho verde, com aquele sabor caseiro de festa junina o ano inteiro.</p>
+            <div class="prato-rodape">
+              <span class="prato-preco">R$ 35</span>
+              <div class="stepper-card" data-nome="Milho" data-preco="35">
+                <button type="button" class="dec" aria-label="Diminuir quantidade de Milho">&minus;</button>
+                <span class="qtd">0</span>
+                <button type="button" class="inc" aria-label="Aumentar quantidade de Milho">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="prato" data-colecao="classicos">
+          <div class="prato-foto sem-foto">
+            <span class="marca-placeholder" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 26c0-4 3-6 6-6 1-4 5-7 10-7s9 3 10 7c3 0 6 2 6 6"/><path d="M8 26v8a3 3 0 0 0 3 3h26a3 3 0 0 0 3-3v-8"/><path d="M8 26h32"/><path d="M24 13V8"/><circle cx="24" cy="6" r="1.6" fill="currentColor" stroke="none"/></svg>
+            <span>Foto em breve</span>
+          </span>
+          </div>
+          <div class="prato-corpo">
+            <h3>Laranja</h3>
+            <p>Bolo de laranja bem molhadinho, com aroma de casa de vó.</p>
+            <div class="prato-rodape">
+              <span class="prato-preco">R$ 35</span>
+              <div class="stepper-card" data-nome="Laranja" data-preco="35">
+                <button type="button" class="dec" aria-label="Diminuir quantidade de Laranja">&minus;</button>
+                <span class="qtd">0</span>
+                <button type="button" class="inc" aria-label="Aumentar quantidade de Laranja">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
         </div>
       </div>
 
@@ -554,94 +605,123 @@ footer .marca-rodape{
         <div class="colecao-topo">
           <span class="nome">Os mais pedidos</span>
         </div>
-
-        <div class="linha-sabor">
-          <button class="sabor" aria-pressed="false" data-nome="Cenoura com brigadeiro" data-preco="45" aria-controls="foto-cenoura" aria-expanded="false">
-            <span class="caixa"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5l3.2 3.2L12 3.8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <span class="nome">Cenoura com brigadeiro</span><span class="preco">R$ 45</span>
-          </button>
-          <div class="stepper" hidden>
-            <button type="button" class="dec" aria-label="Diminuir quantidade de Cenoura com brigadeiro">&minus;</button>
-            <span class="qtd">1</span>
-            <button type="button" class="inc" aria-label="Aumentar quantidade de Cenoura com brigadeiro">+</button>
+        <div class="grade-pratos">
+        <div class="prato" data-colecao="mais-pedidos">
+          <div class="prato-foto">
+            <img src="img/bolo-cenoura.jpg" alt="Bolo de cenoura com cobertura de brigadeiro e granulado" loading="lazy" decoding="async">
+          <button type="button" class="badge-ampliar" data-alvo="cenoura-com-brigadeiro">Ampliar</button>
           </div>
-        </div>
-        <div class="foto-sabor" id="foto-cenoura">
-          <div class="interna">
-            <figure>
-              <img src="img/bolo-cenoura.jpg" decoding="async" alt="Bolo de cenoura com cobertura de brigadeiro e granulado" loading="lazy">
-              <div class="foto-texto">
-                <figcaption>Massa fofinha de cenoura sob uma cobertura cremosa de brigadeiro, com granulado por cima.</figcaption>
-                <button type="button" class="incluir-pedido">Incluir no pedido</button>
+          <div class="prato-corpo">
+            <h3>Cenoura com brigadeiro</h3>
+            <p>Massa fofinha de cenoura sob uma cobertura cremosa de brigadeiro, com granulado por cima.</p>
+            <div class="prato-rodape">
+              <span class="prato-preco">R$ 45</span>
+              <div class="stepper-card" data-nome="Cenoura com brigadeiro" data-preco="45">
+                <button type="button" class="dec" aria-label="Diminuir quantidade de Cenoura com brigadeiro">&minus;</button>
+                <span class="qtd">0</span>
+                <button type="button" class="inc" aria-label="Aumentar quantidade de Cenoura com brigadeiro">+</button>
               </div>
-            </figure>
+            </div>
           </div>
         </div>
-        <div class="linha-sabor">
-          <button class="sabor" aria-pressed="false" data-nome="Coco com cobertura" data-preco="45">
-            <span class="caixa"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5l3.2 3.2L12 3.8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <span class="nome">Coco com cobertura</span><span class="preco">R$ 45</span>
-          </button>
-          <div class="stepper" hidden>
-            <button type="button" class="dec" aria-label="Diminuir quantidade de Coco com cobertura">&minus;</button>
-            <span class="qtd">1</span>
-            <button type="button" class="inc" aria-label="Aumentar quantidade de Coco com cobertura">+</button>
+        <div class="prato" data-colecao="mais-pedidos">
+          <div class="prato-foto sem-foto">
+            <span class="marca-placeholder" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 26c0-4 3-6 6-6 1-4 5-7 10-7s9 3 10 7c3 0 6 2 6 6"/><path d="M8 26v8a3 3 0 0 0 3 3h26a3 3 0 0 0 3-3v-8"/><path d="M8 26h32"/><path d="M24 13V8"/><circle cx="24" cy="6" r="1.6" fill="currentColor" stroke="none"/></svg>
+            <span>Foto em breve</span>
+          </span>
           </div>
-        </div>
-        <div class="linha-sabor">
-          <button class="sabor" aria-pressed="false" data-nome="Limão" data-preco="45">
-            <span class="caixa"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5l3.2 3.2L12 3.8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <span class="nome">Limão</span><span class="preco">R$ 45</span>
-          </button>
-          <div class="stepper" hidden>
-            <button type="button" class="dec" aria-label="Diminuir quantidade de Limão">&minus;</button>
-            <span class="qtd">1</span>
-            <button type="button" class="inc" aria-label="Aumentar quantidade de Limão">+</button>
-          </div>
-        </div>
-        <div class="linha-sabor">
-          <button class="sabor" aria-pressed="false" data-nome="Leite ninho" data-preco="45" aria-controls="foto-leite-ninho" aria-expanded="false">
-            <span class="caixa"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5l3.2 3.2L12 3.8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <span class="nome">Leite ninho</span><span class="preco">R$ 45</span>
-          </button>
-          <div class="stepper" hidden>
-            <button type="button" class="dec" aria-label="Diminuir quantidade de Leite ninho">&minus;</button>
-            <span class="qtd">1</span>
-            <button type="button" class="inc" aria-label="Aumentar quantidade de Leite ninho">+</button>
-          </div>
-        </div>
-        <div class="foto-sabor" id="foto-leite-ninho">
-          <div class="interna">
-            <figure>
-              <img src="img/bolo-leite-ninho.jpg" decoding="async" alt="Bolo de leite ninho com cobertura branca cremosa, em pedestal" loading="lazy">
-              <div class="foto-texto">
-                <figcaption>Bolo macio de leite ninho, com uma cobertura branca cremosa por cima.</figcaption>
-                <button type="button" class="incluir-pedido">Incluir no pedido</button>
+          <div class="prato-corpo">
+            <h3>Coco com cobertura</h3>
+            <p>Bolo de coco fofinho, com cobertura cremosa e coco ralado por cima.</p>
+            <div class="prato-rodape">
+              <span class="prato-preco">R$ 45</span>
+              <div class="stepper-card" data-nome="Coco com cobertura" data-preco="45">
+                <button type="button" class="dec" aria-label="Diminuir quantidade de Coco com cobertura">&minus;</button>
+                <span class="qtd">0</span>
+                <button type="button" class="inc" aria-label="Aumentar quantidade de Coco com cobertura">+</button>
               </div>
-            </figure>
+            </div>
           </div>
         </div>
-        <div class="linha-sabor">
-          <button class="sabor" aria-pressed="false" data-nome="Chocolate com cobertura" data-preco="45">
-            <span class="caixa"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5l3.2 3.2L12 3.8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <span class="nome">Chocolate com cobertura</span><span class="preco">R$ 45</span>
-          </button>
-          <div class="stepper" hidden>
-            <button type="button" class="dec" aria-label="Diminuir quantidade de Chocolate com cobertura">&minus;</button>
-            <span class="qtd">1</span>
-            <button type="button" class="inc" aria-label="Aumentar quantidade de Chocolate com cobertura">+</button>
+        <div class="prato" data-colecao="mais-pedidos">
+          <div class="prato-foto sem-foto">
+            <span class="marca-placeholder" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 26c0-4 3-6 6-6 1-4 5-7 10-7s9 3 10 7c3 0 6 2 6 6"/><path d="M8 26v8a3 3 0 0 0 3 3h26a3 3 0 0 0 3-3v-8"/><path d="M8 26h32"/><path d="M24 13V8"/><circle cx="24" cy="6" r="1.6" fill="currentColor" stroke="none"/></svg>
+            <span>Foto em breve</span>
+          </span>
+          </div>
+          <div class="prato-corpo">
+            <h3>Limão</h3>
+            <p>Bolo de limão fresquinho, com o equilíbrio certo entre doce e cítrico.</p>
+            <div class="prato-rodape">
+              <span class="prato-preco">R$ 45</span>
+              <div class="stepper-card" data-nome="Limão" data-preco="45">
+                <button type="button" class="dec" aria-label="Diminuir quantidade de Limão">&minus;</button>
+                <span class="qtd">0</span>
+                <button type="button" class="inc" aria-label="Aumentar quantidade de Limão">+</button>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="linha-sabor">
-          <button class="sabor" aria-pressed="false" data-nome="Churros" data-preco="45">
-            <span class="caixa"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5l3.2 3.2L12 3.8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <span class="nome">Churros</span><span class="preco">R$ 45</span>
-          </button>
-          <div class="stepper" hidden>
-            <button type="button" class="dec" aria-label="Diminuir quantidade de Churros">&minus;</button>
-            <span class="qtd">1</span>
-            <button type="button" class="inc" aria-label="Aumentar quantidade de Churros">+</button>
+        <div class="prato" data-colecao="mais-pedidos">
+          <div class="prato-foto">
+            <img src="img/bolo-leite-ninho.jpg" alt="Bolo de leite ninho com cobertura branca cremosa, em pedestal" loading="lazy" decoding="async">
+          <button type="button" class="badge-ampliar" data-alvo="leite-ninho">Ampliar</button>
           </div>
+          <div class="prato-corpo">
+            <h3>Leite ninho</h3>
+            <p>Bolo macio de leite ninho, com uma cobertura branca cremosa por cima.</p>
+            <div class="prato-rodape">
+              <span class="prato-preco">R$ 45</span>
+              <div class="stepper-card" data-nome="Leite ninho" data-preco="45">
+                <button type="button" class="dec" aria-label="Diminuir quantidade de Leite ninho">&minus;</button>
+                <span class="qtd">0</span>
+                <button type="button" class="inc" aria-label="Aumentar quantidade de Leite ninho">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="prato" data-colecao="mais-pedidos">
+          <div class="prato-foto sem-foto">
+            <span class="marca-placeholder" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 26c0-4 3-6 6-6 1-4 5-7 10-7s9 3 10 7c3 0 6 2 6 6"/><path d="M8 26v8a3 3 0 0 0 3 3h26a3 3 0 0 0 3-3v-8"/><path d="M8 26h32"/><path d="M24 13V8"/><circle cx="24" cy="6" r="1.6" fill="currentColor" stroke="none"/></svg>
+            <span>Foto em breve</span>
+          </span>
+          </div>
+          <div class="prato-corpo">
+            <h3>Chocolate com cobertura</h3>
+            <p>Bolo de chocolate intenso, com cobertura cremosa escorrendo pelas bordas.</p>
+            <div class="prato-rodape">
+              <span class="prato-preco">R$ 45</span>
+              <div class="stepper-card" data-nome="Chocolate com cobertura" data-preco="45">
+                <button type="button" class="dec" aria-label="Diminuir quantidade de Chocolate com cobertura">&minus;</button>
+                <span class="qtd">0</span>
+                <button type="button" class="inc" aria-label="Aumentar quantidade de Chocolate com cobertura">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="prato" data-colecao="mais-pedidos">
+          <div class="prato-foto sem-foto">
+            <span class="marca-placeholder" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 26c0-4 3-6 6-6 1-4 5-7 10-7s9 3 10 7c3 0 6 2 6 6"/><path d="M8 26v8a3 3 0 0 0 3 3h26a3 3 0 0 0 3-3v-8"/><path d="M8 26h32"/><path d="M24 13V8"/><circle cx="24" cy="6" r="1.6" fill="currentColor" stroke="none"/></svg>
+            <span>Foto em breve</span>
+          </span>
+          </div>
+          <div class="prato-corpo">
+            <h3>Churros</h3>
+            <p>Bolo inspirado em churros, com canela e um toque de doce de leite.</p>
+            <div class="prato-rodape">
+              <span class="prato-preco">R$ 45</span>
+              <div class="stepper-card" data-nome="Churros" data-preco="45">
+                <button type="button" class="dec" aria-label="Diminuir quantidade de Churros">&minus;</button>
+                <span class="qtd">0</span>
+                <button type="button" class="inc" aria-label="Aumentar quantidade de Churros">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
         </div>
       </div>
 
@@ -653,6 +733,21 @@ footer .marca-rodape{
     </div>
   </div>
 </section>
+
+<!-- ================= LIGHTBOX DO CARDAPIO ================= -->
+<div class="lightbox-prato" id="lightboxPrato" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="lightbox-veu" data-fecha-lightbox></div>
+  <div class="lightbox-conteudo">
+    <button type="button" class="lightbox-fechar" data-fecha-lightbox aria-label="Fechar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <img id="lightboxImg" src="" alt="">
+    <div class="lightbox-texto">
+      <h3 id="lightboxTitulo"></h3>
+      <p id="lightboxDesc"></p>
+    </div>
+  </div>
+</div>
 
 <!-- ================= SOBRE A BIA ================= -->
 <section class="sobre tom-cafe com-foto" data-fundo="bia">
@@ -785,14 +880,6 @@ footer .marca-rodape{
   function moeda(v){ return 'R$ ' + v.toFixed(2).replace('.', ','); }
 
   function atualizar(){
-    document.querySelectorAll('.incluir-pedido').forEach(function(cta){
-      var linha = cta.closest('.foto-sabor').previousElementSibling;
-      var btnSabor = linha.querySelector('.sabor');
-      var incluido = !!encontraItem(btnSabor.dataset.nome);
-      cta.textContent = incluido ? 'Remover do pedido' : 'Incluir no pedido';
-      cta.classList.toggle('incluido', incluido);
-    });
-
     if(!itens.length){
       bandeja.classList.remove('aberta');
       resumo.textContent = 'Nenhum sabor escolhido';
@@ -817,122 +904,80 @@ footer .marca-rodape{
     return itens.find(function(x){ return x.nome === nome; });
   }
 
-  function definePainel(btn, aberto){
-    var alvo = btn.getAttribute('aria-controls');
-    if(!alvo) return;
-    var painel = document.getElementById(alvo);
-    if(painel){
-      painel.classList.toggle('aberta', aberto);
-      btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
-    }
-  }
-
-  function marcaSelecionado(btn){
-    var linha = btn.closest('.linha-sabor');
-    var stepper = linha.querySelector('.stepper');
-    var nome = btn.dataset.nome;
-    var preco = parseFloat(btn.dataset.preco);
-
-    itens.push({nome:nome, preco:preco, qtd:1});
-    btn.setAttribute('aria-pressed','true');
-    btn.classList.add('tem-qtd');
-    stepper.hidden = false;
-    stepper.querySelector('.qtd').textContent = '1';
-    atualizar();
-  }
-
-  function desmarcaSelecionado(btn){
-    var linha = btn.closest('.linha-sabor');
-    var stepper = linha.querySelector('.stepper');
-    var nome = btn.dataset.nome;
-    var i = itens.findIndex(function(x){ return x.nome === nome; });
-    if(i > -1) itens.splice(i,1);
-
-    btn.setAttribute('aria-pressed','false');
-    btn.classList.remove('tem-qtd');
-    stepper.hidden = true;
-    stepper.querySelector('.qtd').textContent = '1';
-    atualizar();
-  }
-
-  /* usadas pelo clique nos sabores sem foto: selecionar tambem fecha/abre o proprio estado da foto (quando existir) */
-  function selecionaUma(btn){ marcaSelecionado(btn); definePainel(btn, true); }
-  function removeToda(btn){ desmarcaSelecionado(btn); definePainel(btn, false); }
-
-  document.querySelectorAll('.sabor').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      /* sabores com foto: o clique so abre/fecha a foto, nao inclui no pedido sozinho */
-      if(btn.hasAttribute('aria-controls')){
-        var aberto = btn.getAttribute('aria-expanded') === 'true';
-        definePainel(btn, !aberto);
-        return;
-      }
-      var nome = btn.dataset.nome;
-      if(encontraItem(nome)) removeToda(btn);
-      else selecionaUma(btn);
-    });
-  });
-
-  document.querySelectorAll('.incluir-pedido').forEach(function(cta){
-    var painel = cta.closest('.foto-sabor');
-    var linha = painel.previousElementSibling;
-    var btn = linha.querySelector('.sabor');
-
-    function sincroniza(){
-      var incluido = !!encontraItem(btn.dataset.nome);
-      cta.textContent = incluido ? 'Remover do pedido' : 'Incluir no pedido';
-      cta.classList.toggle('incluido', incluido);
-    }
-
-    cta.addEventListener('click', function(){
-      if(encontraItem(btn.dataset.nome)) desmarcaSelecionado(btn);
-      else marcaSelecionado(btn);
-      sincroniza();
-    });
-
-    sincroniza();
-  });
-
-  document.querySelectorAll('.stepper').forEach(function(stepper){
-    var linha = stepper.closest('.linha-sabor');
-    var btn = linha.querySelector('.sabor');
+  function ajustaQtd(cartao, delta){
+    var stepper = cartao.querySelector('.stepper-card');
+    var nome = stepper.dataset.nome;
+    var preco = parseFloat(stepper.dataset.preco);
     var qtdEl = stepper.querySelector('.qtd');
+    var item = encontraItem(nome);
 
-    stepper.querySelector('.inc').addEventListener('click', function(){
-      var item = encontraItem(btn.dataset.nome);
-      if(!item) return;
-      item.qtd = Math.min(item.qtd + 1, 20);
-      qtdEl.textContent = item.qtd;
-      atualizar();
-    });
+    if(!item && delta > 0){
+      item = {nome:nome, preco:preco, qtd:0};
+      itens.push(item);
+    }
+    if(!item) return;
 
-    stepper.querySelector('.dec').addEventListener('click', function(){
-      var item = encontraItem(btn.dataset.nome);
-      if(!item) return;
-      item.qtd -= 1;
-      if(item.qtd <= 0){ removeToda(btn); return; }
-      qtdEl.textContent = item.qtd;
-      atualizar();
-    });
+    item.qtd = Math.max(0, Math.min(20, item.qtd + delta));
+    qtdEl.textContent = item.qtd;
+    cartao.classList.toggle('no-carrinho', item.qtd > 0);
+
+    if(item.qtd === 0){
+      var i = itens.indexOf(item);
+      if(i > -1) itens.splice(i,1);
+    }
+    atualizar();
+  }
+
+  document.querySelectorAll('.prato').forEach(function(cartao){
+    cartao.querySelector('.stepper-card .inc').addEventListener('click', function(){ ajustaQtd(cartao, 1); });
+    cartao.querySelector('.stepper-card .dec').addEventListener('click', function(){ ajustaQtd(cartao, -1); });
   });
 
   document.getElementById('limpar').addEventListener('click', function(){
     itens = [];
-    document.querySelectorAll('.sabor').forEach(function(b){
-      b.setAttribute('aria-pressed','false');
-      b.classList.remove('tem-qtd');
-      if(b.hasAttribute('aria-expanded')) b.setAttribute('aria-expanded','false');
-    });
-    document.querySelectorAll('.stepper').forEach(function(s){
-      s.hidden = true;
-      s.querySelector('.qtd').textContent = '1';
-    });
-    document.querySelectorAll('.foto-sabor').forEach(function(f){ f.classList.remove('aberta'); });
-    document.querySelectorAll('.incluir-pedido').forEach(function(c){
-      c.textContent = 'Incluir no pedido';
-      c.classList.remove('incluido');
+    document.querySelectorAll('.prato').forEach(function(cartao){
+      cartao.classList.remove('no-carrinho');
+      cartao.querySelector('.stepper-card .qtd').textContent = '0';
     });
     atualizar();
+  });
+
+  /* ---- lightbox: ampliar foto do prato ---- */
+  var lightbox = document.getElementById('lightboxPrato');
+  var lightboxImg = document.getElementById('lightboxImg');
+  var lightboxTitulo = document.getElementById('lightboxTitulo');
+  var lightboxDesc = document.getElementById('lightboxDesc');
+  var ultimoFoco = null;
+
+  function abreLightbox(cartao){
+    var img = cartao.querySelector('.prato-foto img');
+    if(!img) return;
+    ultimoFoco = document.activeElement;
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    lightboxTitulo.textContent = cartao.querySelector('h3').textContent;
+    lightboxDesc.textContent = cartao.querySelector('.prato-corpo p').textContent;
+    lightbox.classList.add('aberto');
+    lightbox.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+  }
+  function fechaLightbox(){
+    lightbox.classList.remove('aberto');
+    lightbox.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+    if(ultimoFoco) ultimoFoco.focus();
+  }
+
+  document.querySelectorAll('.badge-ampliar').forEach(function(botao){
+    botao.addEventListener('click', function(){
+      abreLightbox(botao.closest('.prato'));
+    });
+  });
+  lightbox.querySelectorAll('[data-fecha-lightbox]').forEach(function(el){
+    el.addEventListener('click', fechaLightbox);
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && lightbox.classList.contains('aberto')) fechaLightbox();
   });
 
   var suave = !window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
