@@ -162,12 +162,18 @@ section{
 }
 [data-fundo="carte"]::before{background-image:url("img/fundo-cardapio.jpg");opacity:.26}
 [data-fundo="bia"]::before{background-image:url("img/fundo-bia.jpg");opacity:.38}
-[data-fundo="depo"]::before{background-image:url("img/fundo-depoimentos.jpg");opacity:.22}
-[data-fundo="fecha"]::before{background-image:url("img/fundo-fechamento.jpg");opacity:.18}
+[data-fundo="depo"]::before{background-image:url("img/fundo-depoimentos.jpg");opacity:1}
+[data-fundo="fecha"]::before{background-image:url("img/fundo-fechamento.jpg");opacity:1}
 .cabeca{margin-bottom:clamp(2.2rem,5vw,3.2rem)}
 .cabeca.centro{text-align:center}
 .cabeca .eyebrow{margin-bottom:1rem;font-size:.82rem}
 .cabeca p{max-width:48ch;font-size:1.18rem;margin:1.1rem 0 0}
+[data-fundo="depo"] .cabeca{
+  display:block;width:fit-content;margin-inline:auto;
+  background:rgba(255,252,246,.92);
+  padding:1.6rem 2.2rem;border-radius:22px;
+  box-shadow:0 14px 34px rgba(46,28,17,.12);
+}
 .cabeca.centro p{margin-inline:auto}
 
 /* ---------- SOBRE A BIA ---------- */
@@ -507,6 +513,20 @@ footer .marca-rodape{
   .dupla-checkout{grid-template-columns:1fr}
 }
 
+/* ---------- ASSINATURA DO DESENVOLVEDOR ---------- */
+.assinatura-dev{
+  display:block;text-align:center;background:var(--cream);
+  margin:0;padding:1.6rem 1.2rem calc(1.6rem + 88px);
+  font-size:.78rem;color:rgba(94,48,35,.55);
+  font-family:'Plus Jakarta Sans',sans-serif;
+}
+.assinatura-dev a{
+  color:var(--coffee);font-weight:600;text-decoration:none;
+  border-bottom:1px solid rgba(137,87,55,.35);
+  transition:color .2s ease,border-color .2s ease;
+}
+.assinatura-dev a:hover{color:var(--brownie);border-color:var(--brownie)}
+
 /* ---------- BANDEJA ---------- */
 .bandeja{
   position:fixed;left:0;right:0;bottom:0;z-index:60;padding:0 0 env(safe-area-inset-bottom);
@@ -596,6 +616,7 @@ footer .marca-rodape{
   .bandeja .btn{width:100%}
   .flutuante{width:50px;height:50px;right:16px;bottom:96px}
   .flutuante svg{width:24px;height:24px}
+  .assinatura-dev{padding-bottom:calc(1.6rem + 150px)}
 }
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
@@ -1014,6 +1035,8 @@ footer .marca-rodape{
   </div>
 </section>
 
+<p class="assinatura-dev">Desenvolvido por <a href="#" target="_blank" rel="noopener">Witter Veloso</a> - Soluções com Inteligência Artificial</p>
+
 <!-- ================= BANDEJA ================= -->
 <div class="bandeja" id="bandeja" role="region" aria-label="Seu pedido">
   <div class="caixa">
@@ -1071,41 +1094,45 @@ footer .marca-rodape{
       </div>
 
       <div class="campos-condicionais" id="camposEntrega">
-        <div class="campo-checkout">
-          <label for="checkoutEndereco">Endereço</label>
-          <input type="text" id="checkoutEndereco" placeholder="Rua e número">
-        </div>
-        <div class="dupla-checkout">
+        <div class="interna">
           <div class="campo-checkout">
-            <label for="checkoutBairro">Bairro</label>
-            <input type="text" id="checkoutBairro" placeholder="Seu bairro">
+            <label for="checkoutEndereco">Endereço</label>
+            <input type="text" id="checkoutEndereco" placeholder="Rua e número">
           </div>
+          <div class="dupla-checkout">
+            <div class="campo-checkout">
+              <label for="checkoutBairro">Bairro</label>
+              <input type="text" id="checkoutBairro" placeholder="Seu bairro">
+            </div>
+            <div class="campo-checkout">
+              <label for="checkoutReferencia">Ponto de referência</label>
+              <input type="text" id="checkoutReferencia" placeholder="Ex: perto do mercado">
+            </div>
+          </div>
+
           <div class="campo-checkout">
-            <label for="checkoutReferencia">Ponto de referência</label>
-            <input type="text" id="checkoutReferencia" placeholder="Ex: perto do mercado">
+            <label>Forma de pagamento *</label>
+            <div class="opcoes-tres">
+              <button type="button" class="opcao-pequena" data-pagamento="Pix">
+                <span class="opcao-icone">💠</span>Pix
+              </button>
+              <button type="button" class="opcao-pequena" data-pagamento="Cartão">
+                <span class="opcao-icone">💳</span>Cartão
+              </button>
+              <button type="button" class="opcao-pequena" data-pagamento="Dinheiro">
+                <span class="opcao-icone">💵</span>Dinheiro
+              </button>
+            </div>
           </div>
-        </div>
-      </div>
 
-      <div class="campo-checkout">
-        <label>Forma de pagamento *</label>
-        <div class="opcoes-tres">
-          <button type="button" class="opcao-pequena" data-pagamento="Pix">
-            <span class="opcao-icone">💠</span>Pix
-          </button>
-          <button type="button" class="opcao-pequena" data-pagamento="Cartão">
-            <span class="opcao-icone">💳</span>Cartão
-          </button>
-          <button type="button" class="opcao-pequena" data-pagamento="Dinheiro">
-            <span class="opcao-icone">💵</span>Dinheiro
-          </button>
-        </div>
-      </div>
-
-      <div class="campos-condicionais" id="campoTroco">
-        <div class="campo-checkout">
-          <label for="checkoutTroco">Precisa de troco? Para quanto?</label>
-          <input type="text" id="checkoutTroco" placeholder="Ex: para R$ 100,00 (ou deixe em branco se não precisar)">
+          <div class="campos-condicionais" id="campoTroco">
+            <div class="interna">
+              <div class="campo-checkout">
+                <label for="checkoutTroco">Precisa de troco? Para quanto?</label>
+                <input type="text" id="checkoutTroco" placeholder="Ex: para R$ 100,00 (ou deixe em branco se não precisar)">
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -1339,7 +1366,7 @@ footer .marca-rodape{
       checkoutErro.classList.add('mostrar');
       return;
     }
-    if(!pagamentoEscolhido){
+    if(receberEscolhido === 'entrega' && !pagamentoEscolhido){
       checkoutErro.textContent = 'Escolha a forma de pagamento.';
       checkoutErro.classList.add('mostrar');
       return;
@@ -1368,14 +1395,14 @@ footer .marca-rodape{
       if(endereco) partes.push('Endereço: ' + endereco);
       if(bairro) partes.push('Bairro: ' + bairro);
       if(referencia) partes.push('Ponto de referência: ' + referencia);
+
+      partes.push('Pagamento: ' + pagamentoEscolhido);
+      if(pagamentoEscolhido === 'Dinheiro'){
+        var troco = document.getElementById('checkoutTroco').value.trim();
+        partes.push('Troco: ' + (troco || 'não precisa'));
+      }
     } else {
       partes.push('Retirada no local');
-    }
-
-    partes.push('Pagamento: ' + pagamentoEscolhido);
-    if(pagamentoEscolhido === 'Dinheiro'){
-      var troco = document.getElementById('checkoutTroco').value.trim();
-      partes.push('Troco: ' + (troco || 'não precisa'));
     }
 
     if(obs) { partes.push(''); partes.push('Observação: ' + obs); }
