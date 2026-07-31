@@ -259,13 +259,26 @@ section{
   font-size:.9rem;line-height:1.55;color:var(--tinta);margin:0;flex:1;
 }
 .prato-rodape{
-  display:flex;align-items:center;justify-content:space-between;gap:.8rem;
-  margin-top:.5rem;padding-top:.9rem;border-top:1px dashed rgba(192,133,82,.28);
+  display:flex;align-items:center;margin-top:.5rem;padding-top:.9rem;
+  border-top:1px dashed rgba(192,133,82,.28);min-height:44px;
 }
 .prato-preco{
   font-family:'Bricolage Grotesque',sans-serif;font-weight:700;
   font-size:1.05rem;color:var(--coffee);letter-spacing:-.02em;
 }
+.btn-encomendar{
+  width:100%;background:var(--brownie);color:var(--cream);border:0;border-radius:99px;
+  padding:.65rem 1rem;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:.92rem;
+  cursor:pointer;transition:background .2s ease,transform .2s ease;
+}
+.btn-encomendar:hover{background:var(--caramel);transform:translateY(-1px)}
+.prato-pedido{
+  display:none;width:100%;align-items:center;justify-content:space-between;gap:.8rem;
+  animation:surgePedido .3s ease;
+}
+.prato-rodape.ativo .btn-encomendar{display:none}
+.prato-rodape.ativo .prato-pedido{display:flex}
+@keyframes surgePedido{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
 
 .stepper-card{flex:none;display:flex;align-items:center;gap:.55rem}
 .stepper-card button{
@@ -373,6 +386,125 @@ footer p{margin:0}
 footer .marca-rodape{
   font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1.1rem;
   color:var(--brownie);display:block;margin-bottom:.15rem;letter-spacing:-.03em;
+}
+
+/* ---------- CHECKOUT ---------- */
+.checkout-modal{
+  position:fixed;inset:0;z-index:90;display:none;align-items:center;justify-content:center;padding:1.2rem;
+}
+.checkout-modal.aberto{display:flex}
+.checkout-veu{position:absolute;inset:0;background:rgba(46,28,17,.6);backdrop-filter:blur(2px)}
+.checkout-caixa{
+  position:relative;z-index:1;background:var(--leite);border-radius:var(--r-g);
+  width:min(520px,100%);max-height:92vh;overflow-y:auto;
+  box-shadow:0 30px 70px rgba(0,0,0,.32);
+}
+.checkout-cabeca{
+  position:sticky;top:0;z-index:2;background:var(--brownie);color:var(--cream);
+  padding:1.4rem 1.6rem;display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;
+  border-radius:var(--r-g) var(--r-g) 0 0;
+}
+.checkout-cabeca h2{
+  font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1.3rem;
+  color:#FFFFFF;margin:0 0 .2rem;letter-spacing:-.02em;
+}
+.checkout-cabeca p{margin:0;font-size:.84rem;color:rgba(243,233,220,.8)}
+.checkout-fechar{
+  flex:none;width:34px;height:34px;border-radius:50%;border:0;cursor:pointer;
+  background:rgba(255,252,246,.16);color:var(--cream);
+  display:grid;place-content:center;transition:background .2s ease;
+}
+.checkout-fechar:hover{background:rgba(255,252,246,.28)}
+.checkout-fechar svg{width:16px;height:16px}
+
+.checkout-corpo{padding:1.5rem 1.6rem 1.8rem}
+
+.checkout-resumo{
+  background:var(--cream);border:1px solid rgba(192,133,82,.3);border-radius:14px;
+  padding:1rem 1.2rem;margin-bottom:1.4rem;
+}
+.checkout-resumo-titulo{
+  display:block;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;
+  font-size:.92rem;color:var(--coffee);margin-bottom:.5rem;
+}
+.checkout-item-linha{
+  display:flex;justify-content:space-between;gap:.8rem;font-size:.92rem;
+  color:var(--brownie);padding:.3rem 0;
+}
+.checkout-item-linha b{font-weight:700;color:var(--coffee)}
+.checkout-total-linha{
+  display:flex;justify-content:space-between;gap:.8rem;margin-top:.6rem;
+  padding-top:.6rem;border-top:1px dashed rgba(192,133,82,.35);
+  font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1.05rem;color:var(--brownie);
+}
+
+.campo-checkout{margin-bottom:1.2rem;text-align:left}
+.campo-checkout label{
+  display:block;font-size:.86rem;font-weight:700;margin-bottom:.5rem;color:var(--coffee);
+}
+.campo-checkout input,.campo-checkout textarea{
+  width:100%;padding:.85rem 1rem;border-radius:12px;
+  border:1.5px solid rgba(192,133,82,.35);background:var(--leite);
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:.98rem;color:var(--brownie);
+  transition:border-color .2s ease,box-shadow .2s ease;
+}
+.campo-checkout textarea{resize:vertical;min-height:80px;line-height:1.5}
+.campo-checkout input:focus,.campo-checkout textarea:focus{
+  outline:none;border-color:var(--caramel);box-shadow:0 0 0 3px rgba(192,133,82,.16);
+}
+.dupla-checkout{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.dupla-checkout .campo-checkout{margin-bottom:0}
+
+.opcoes-duas{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+.opcoes-tres{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem}
+
+.opcao-grande{
+  display:flex;flex-direction:column;align-items:center;gap:.5rem;
+  background:var(--leite);border:1.5px solid rgba(192,133,82,.3);border-radius:14px;
+  padding:1.1rem .8rem;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;
+  font-weight:600;font-size:.9rem;color:var(--brownie);
+  transition:border-color .2s ease,background .2s ease,transform .18s ease;
+}
+.opcao-grande:hover{border-color:var(--caramel);transform:translateY(-1px)}
+.opcao-grande .opcao-icone{font-size:1.5rem}
+.opcao-grande.selecionada{background:#FBF1E6;border-color:var(--caramel);border-width:2px}
+
+.opcao-pequena{
+  display:flex;flex-direction:column;align-items:center;gap:.35rem;
+  background:var(--leite);border:1.5px solid rgba(192,133,82,.3);border-radius:12px;
+  padding:.8rem .5rem;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;
+  font-weight:600;font-size:.82rem;color:var(--brownie);
+  transition:border-color .2s ease,background .2s ease,transform .18s ease;
+}
+.opcao-pequena:hover{border-color:var(--caramel);transform:translateY(-1px)}
+.opcao-pequena .opcao-icone{font-size:1.25rem}
+.opcao-pequena.selecionada{background:#FBF1E6;border-color:var(--caramel);border-width:2px}
+
+.campos-condicionais{
+  display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s cubic-bezier(.65,0,.35,1);
+  margin-bottom:0;
+}
+.campos-condicionais > *{overflow:hidden}
+.campos-condicionais.aberta{grid-template-rows:1fr;margin-bottom:1.2rem}
+
+.aviso-erro{
+  color:#B0554C;font-size:.85rem;margin:-.4rem 0 1rem;text-align:left;display:none;
+}
+.aviso-erro.mostrar{display:block}
+
+.btn-checkout-enviar{
+  width:100%;display:flex;align-items:center;justify-content:center;gap:.6rem;
+  background:#25D366;color:#fff;border:0;border-radius:99px;
+  padding:1.05rem 1.5rem;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1rem;
+  cursor:pointer;transition:background .2s ease,transform .2s ease;
+  box-shadow:0 12px 26px rgba(37,211,102,.3);
+}
+.btn-checkout-enviar:hover{background:#1EBE57;transform:translateY(-2px)}
+.btn-checkout-enviar svg{width:19px;height:19px;fill:#fff}
+
+@media (max-width:520px){
+  .checkout-corpo{padding:1.3rem 1.2rem 1.5rem}
+  .dupla-checkout{grid-template-columns:1fr}
 }
 
 /* ---------- BANDEJA ---------- */
@@ -531,11 +663,14 @@ footer .marca-rodape{
             <h3>Banana</h3>
             <p>Bolo fofinho de banana, feito com receita de família. Simples e gostoso do jeito que a gente ama.</p>
             <div class="prato-rodape">
-              <span class="prato-preco">R$ 35</span>
-              <div class="stepper-card" data-nome="Banana" data-preco="35">
-                <button type="button" class="dec" aria-label="Diminuir quantidade de Banana">&minus;</button>
-                <span class="qtd">0</span>
-                <button type="button" class="inc" aria-label="Aumentar quantidade de Banana">+</button>
+              <button type="button" class="btn-encomendar">Encomendar</button>
+              <div class="prato-pedido">
+                <span class="prato-preco">R$ 35</span>
+                <div class="stepper-card" data-nome="Banana" data-preco="35">
+                  <button type="button" class="dec" aria-label="Diminuir quantidade de Banana">&minus;</button>
+                  <span class="qtd">0</span>
+                  <button type="button" class="inc" aria-label="Aumentar quantidade de Banana">+</button>
+                </div>
               </div>
             </div>
           </div>
@@ -549,11 +684,14 @@ footer .marca-rodape{
             <h3>Fubá com goiabada</h3>
             <p>Bolo de fubá fofinho, coberto com uma calda brilhante de goiabada.</p>
             <div class="prato-rodape">
-              <span class="prato-preco">R$ 35</span>
-              <div class="stepper-card" data-nome="Fubá com goiabada" data-preco="35">
-                <button type="button" class="dec" aria-label="Diminuir quantidade de Fubá com goiabada">&minus;</button>
-                <span class="qtd">0</span>
-                <button type="button" class="inc" aria-label="Aumentar quantidade de Fubá com goiabada">+</button>
+              <button type="button" class="btn-encomendar">Encomendar</button>
+              <div class="prato-pedido">
+                <span class="prato-preco">R$ 35</span>
+                <div class="stepper-card" data-nome="Fubá com goiabada" data-preco="35">
+                  <button type="button" class="dec" aria-label="Diminuir quantidade de Fubá com goiabada">&minus;</button>
+                  <span class="qtd">0</span>
+                  <button type="button" class="inc" aria-label="Aumentar quantidade de Fubá com goiabada">+</button>
+                </div>
               </div>
             </div>
           </div>
@@ -569,11 +707,14 @@ footer .marca-rodape{
             <h3>Milho</h3>
             <p>Bolo cremoso de milho verde, com aquele sabor caseiro de festa junina o ano inteiro.</p>
             <div class="prato-rodape">
-              <span class="prato-preco">R$ 35</span>
-              <div class="stepper-card" data-nome="Milho" data-preco="35">
-                <button type="button" class="dec" aria-label="Diminuir quantidade de Milho">&minus;</button>
-                <span class="qtd">0</span>
-                <button type="button" class="inc" aria-label="Aumentar quantidade de Milho">+</button>
+              <button type="button" class="btn-encomendar">Encomendar</button>
+              <div class="prato-pedido">
+                <span class="prato-preco">R$ 35</span>
+                <div class="stepper-card" data-nome="Milho" data-preco="35">
+                  <button type="button" class="dec" aria-label="Diminuir quantidade de Milho">&minus;</button>
+                  <span class="qtd">0</span>
+                  <button type="button" class="inc" aria-label="Aumentar quantidade de Milho">+</button>
+                </div>
               </div>
             </div>
           </div>
@@ -589,11 +730,14 @@ footer .marca-rodape{
             <h3>Laranja</h3>
             <p>Bolo de laranja bem molhadinho, com aroma de casa de vó.</p>
             <div class="prato-rodape">
-              <span class="prato-preco">R$ 35</span>
-              <div class="stepper-card" data-nome="Laranja" data-preco="35">
-                <button type="button" class="dec" aria-label="Diminuir quantidade de Laranja">&minus;</button>
-                <span class="qtd">0</span>
-                <button type="button" class="inc" aria-label="Aumentar quantidade de Laranja">+</button>
+              <button type="button" class="btn-encomendar">Encomendar</button>
+              <div class="prato-pedido">
+                <span class="prato-preco">R$ 35</span>
+                <div class="stepper-card" data-nome="Laranja" data-preco="35">
+                  <button type="button" class="dec" aria-label="Diminuir quantidade de Laranja">&minus;</button>
+                  <span class="qtd">0</span>
+                  <button type="button" class="inc" aria-label="Aumentar quantidade de Laranja">+</button>
+                </div>
               </div>
             </div>
           </div>
@@ -615,11 +759,14 @@ footer .marca-rodape{
             <h3>Cenoura com brigadeiro</h3>
             <p>Massa fofinha de cenoura sob uma cobertura cremosa de brigadeiro, com granulado por cima.</p>
             <div class="prato-rodape">
-              <span class="prato-preco">R$ 45</span>
-              <div class="stepper-card" data-nome="Cenoura com brigadeiro" data-preco="45">
-                <button type="button" class="dec" aria-label="Diminuir quantidade de Cenoura com brigadeiro">&minus;</button>
-                <span class="qtd">0</span>
-                <button type="button" class="inc" aria-label="Aumentar quantidade de Cenoura com brigadeiro">+</button>
+              <button type="button" class="btn-encomendar">Encomendar</button>
+              <div class="prato-pedido">
+                <span class="prato-preco">R$ 45</span>
+                <div class="stepper-card" data-nome="Cenoura com brigadeiro" data-preco="45">
+                  <button type="button" class="dec" aria-label="Diminuir quantidade de Cenoura com brigadeiro">&minus;</button>
+                  <span class="qtd">0</span>
+                  <button type="button" class="inc" aria-label="Aumentar quantidade de Cenoura com brigadeiro">+</button>
+                </div>
               </div>
             </div>
           </div>
@@ -635,11 +782,14 @@ footer .marca-rodape{
             <h3>Coco com cobertura</h3>
             <p>Bolo de coco fofinho, com cobertura cremosa e coco ralado por cima.</p>
             <div class="prato-rodape">
-              <span class="prato-preco">R$ 45</span>
-              <div class="stepper-card" data-nome="Coco com cobertura" data-preco="45">
-                <button type="button" class="dec" aria-label="Diminuir quantidade de Coco com cobertura">&minus;</button>
-                <span class="qtd">0</span>
-                <button type="button" class="inc" aria-label="Aumentar quantidade de Coco com cobertura">+</button>
+              <button type="button" class="btn-encomendar">Encomendar</button>
+              <div class="prato-pedido">
+                <span class="prato-preco">R$ 45</span>
+                <div class="stepper-card" data-nome="Coco com cobertura" data-preco="45">
+                  <button type="button" class="dec" aria-label="Diminuir quantidade de Coco com cobertura">&minus;</button>
+                  <span class="qtd">0</span>
+                  <button type="button" class="inc" aria-label="Aumentar quantidade de Coco com cobertura">+</button>
+                </div>
               </div>
             </div>
           </div>
@@ -655,11 +805,14 @@ footer .marca-rodape{
             <h3>Limão</h3>
             <p>Bolo de limão fresquinho, com o equilíbrio certo entre doce e cítrico.</p>
             <div class="prato-rodape">
-              <span class="prato-preco">R$ 45</span>
-              <div class="stepper-card" data-nome="Limão" data-preco="45">
-                <button type="button" class="dec" aria-label="Diminuir quantidade de Limão">&minus;</button>
-                <span class="qtd">0</span>
-                <button type="button" class="inc" aria-label="Aumentar quantidade de Limão">+</button>
+              <button type="button" class="btn-encomendar">Encomendar</button>
+              <div class="prato-pedido">
+                <span class="prato-preco">R$ 45</span>
+                <div class="stepper-card" data-nome="Limão" data-preco="45">
+                  <button type="button" class="dec" aria-label="Diminuir quantidade de Limão">&minus;</button>
+                  <span class="qtd">0</span>
+                  <button type="button" class="inc" aria-label="Aumentar quantidade de Limão">+</button>
+                </div>
               </div>
             </div>
           </div>
@@ -673,11 +826,14 @@ footer .marca-rodape{
             <h3>Leite ninho</h3>
             <p>Bolo macio de leite ninho, com uma cobertura branca cremosa por cima.</p>
             <div class="prato-rodape">
-              <span class="prato-preco">R$ 45</span>
-              <div class="stepper-card" data-nome="Leite ninho" data-preco="45">
-                <button type="button" class="dec" aria-label="Diminuir quantidade de Leite ninho">&minus;</button>
-                <span class="qtd">0</span>
-                <button type="button" class="inc" aria-label="Aumentar quantidade de Leite ninho">+</button>
+              <button type="button" class="btn-encomendar">Encomendar</button>
+              <div class="prato-pedido">
+                <span class="prato-preco">R$ 45</span>
+                <div class="stepper-card" data-nome="Leite ninho" data-preco="45">
+                  <button type="button" class="dec" aria-label="Diminuir quantidade de Leite ninho">&minus;</button>
+                  <span class="qtd">0</span>
+                  <button type="button" class="inc" aria-label="Aumentar quantidade de Leite ninho">+</button>
+                </div>
               </div>
             </div>
           </div>
@@ -693,11 +849,14 @@ footer .marca-rodape{
             <h3>Chocolate com cobertura</h3>
             <p>Bolo de chocolate intenso, com cobertura cremosa escorrendo pelas bordas.</p>
             <div class="prato-rodape">
-              <span class="prato-preco">R$ 45</span>
-              <div class="stepper-card" data-nome="Chocolate com cobertura" data-preco="45">
-                <button type="button" class="dec" aria-label="Diminuir quantidade de Chocolate com cobertura">&minus;</button>
-                <span class="qtd">0</span>
-                <button type="button" class="inc" aria-label="Aumentar quantidade de Chocolate com cobertura">+</button>
+              <button type="button" class="btn-encomendar">Encomendar</button>
+              <div class="prato-pedido">
+                <span class="prato-preco">R$ 45</span>
+                <div class="stepper-card" data-nome="Chocolate com cobertura" data-preco="45">
+                  <button type="button" class="dec" aria-label="Diminuir quantidade de Chocolate com cobertura">&minus;</button>
+                  <span class="qtd">0</span>
+                  <button type="button" class="inc" aria-label="Aumentar quantidade de Chocolate com cobertura">+</button>
+                </div>
               </div>
             </div>
           </div>
@@ -713,11 +872,14 @@ footer .marca-rodape{
             <h3>Churros</h3>
             <p>Bolo inspirado em churros, com canela e um toque de doce de leite.</p>
             <div class="prato-rodape">
-              <span class="prato-preco">R$ 45</span>
-              <div class="stepper-card" data-nome="Churros" data-preco="45">
-                <button type="button" class="dec" aria-label="Diminuir quantidade de Churros">&minus;</button>
-                <span class="qtd">0</span>
-                <button type="button" class="inc" aria-label="Aumentar quantidade de Churros">+</button>
+              <button type="button" class="btn-encomendar">Encomendar</button>
+              <div class="prato-pedido">
+                <span class="prato-preco">R$ 45</span>
+                <div class="stepper-card" data-nome="Churros" data-preco="45">
+                  <button type="button" class="dec" aria-label="Diminuir quantidade de Churros">&minus;</button>
+                  <span class="qtd">0</span>
+                  <button type="button" class="inc" aria-label="Aumentar quantidade de Churros">+</button>
+                </div>
               </div>
             </div>
           </div>
@@ -860,13 +1022,107 @@ footer .marca-rodape{
       <span class="total" id="total">R$ 0,00</span>
       <button class="limpar" id="limpar" type="button">Limpar seleção</button>
     </div>
-    <a class="btn btn-creme" id="enviar" href="#" target="_blank" rel="noopener">Enviar pedido no WhatsApp</a>
+    <button class="btn btn-creme" id="enviar" type="button">Enviar pedido no WhatsApp</button>
   </div>
 </div>
 
 <a class="flutuante" href="https://wa.me/5511961933356?text=Oi%20Beatriz!%20Vi%20o%20site%20e%20quero%20encomendar%20um%20bolo." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.76-1.66-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.06 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12 2a10 10 0 0 0-8.6 15.1L2 22l5.05-1.32A10 10 0 1 0 12 2m0 1.67a8.3 8.3 0 0 1 6.2 13.85 8.3 8.3 0 0 1-10.5 1.4l-.36-.22-3 .78.8-2.92-.24-.38A8.33 8.33 0 0 1 12 3.67"/></svg>
 </a>
+
+<!-- ================= CHECKOUT ================= -->
+<div class="checkout-modal" id="checkoutModal" aria-hidden="true">
+  <div class="checkout-veu" data-fecha-checkout></div>
+  <div class="checkout-caixa" role="dialog" aria-modal="true" aria-labelledby="checkoutTitulo">
+    <div class="checkout-cabeca">
+      <div>
+        <h2 id="checkoutTitulo">Finalizar encomenda</h2>
+        <p>Doçuras da Bia</p>
+      </div>
+      <button type="button" class="checkout-fechar" data-fecha-checkout aria-label="Fechar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+
+    <div class="checkout-corpo">
+
+      <div class="checkout-resumo">
+        <span class="checkout-resumo-titulo">🛒 Seu pedido</span>
+        <div id="checkoutItens"></div>
+      </div>
+
+      <div class="campo-checkout">
+        <label for="checkoutNome">Seu nome *</label>
+        <input type="text" id="checkoutNome" placeholder="Como você se chama?">
+      </div>
+
+      <div class="campo-checkout">
+        <label>Como prefere receber? *</label>
+        <div class="opcoes-duas">
+          <button type="button" class="opcao-grande" data-receber="retirar">
+            <span class="opcao-icone">🏠</span>
+            <span>Retirar no local</span>
+          </button>
+          <button type="button" class="opcao-grande" data-receber="entrega">
+            <span class="opcao-icone">🛵</span>
+            <span>Entrega</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="campos-condicionais" id="camposEntrega">
+        <div class="campo-checkout">
+          <label for="checkoutEndereco">Endereço</label>
+          <input type="text" id="checkoutEndereco" placeholder="Rua e número">
+        </div>
+        <div class="dupla-checkout">
+          <div class="campo-checkout">
+            <label for="checkoutBairro">Bairro</label>
+            <input type="text" id="checkoutBairro" placeholder="Seu bairro">
+          </div>
+          <div class="campo-checkout">
+            <label for="checkoutReferencia">Ponto de referência</label>
+            <input type="text" id="checkoutReferencia" placeholder="Ex: perto do mercado">
+          </div>
+        </div>
+      </div>
+
+      <div class="campo-checkout">
+        <label>Forma de pagamento *</label>
+        <div class="opcoes-tres">
+          <button type="button" class="opcao-pequena" data-pagamento="Pix">
+            <span class="opcao-icone">💠</span>Pix
+          </button>
+          <button type="button" class="opcao-pequena" data-pagamento="Cartão">
+            <span class="opcao-icone">💳</span>Cartão
+          </button>
+          <button type="button" class="opcao-pequena" data-pagamento="Dinheiro">
+            <span class="opcao-icone">💵</span>Dinheiro
+          </button>
+        </div>
+      </div>
+
+      <div class="campos-condicionais" id="campoTroco">
+        <div class="campo-checkout">
+          <label for="checkoutTroco">Precisa de troco? Para quanto?</label>
+          <input type="text" id="checkoutTroco" placeholder="Ex: para R$ 100,00 (ou deixe em branco se não precisar)">
+        </div>
+      </div>
+
+      <div class="campo-checkout">
+        <label for="checkoutObs">Alguma observação?</label>
+        <textarea id="checkoutObs" placeholder="Ex: sem coco, tamanho especial, data de entrega..."></textarea>
+      </div>
+
+      <p class="aviso-erro" id="checkoutErro"></p>
+
+      <button type="button" class="btn-checkout-enviar" id="btnCheckoutEnviar">
+        Enviar pedido pelo WhatsApp
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.76-1.66-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.06 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12 2a10 10 0 0 0-8.6 15.1L2 22l5.05-1.32A10 10 0 1 0 12 2m0 1.67a8.3 8.3 0 0 1 6.2 13.85 8.3 8.3 0 0 1-10.5 1.4l-.36-.22-3 .78.8-2.92-.24-.38A8.33 8.33 0 0 1 12 3.67"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
 
 <script>
 (function(){
@@ -892,11 +1148,6 @@ footer .marca-rodape{
     resumo.textContent = unidades + (unidades > 1 ? ' bolos: ' : ' bolo: ') + nomes;
     total.textContent = moeda(soma);
 
-    var linhas = itens.map(function(i){
-      return '• ' + (i.qtd > 1 ? i.qtd + 'x ' : '') + i.nome + ' (' + moeda(i.preco * i.qtd) + ')';
-    }).join('\n');
-    var msg = 'Oi Beatriz! Vi o site e quero encomendar:\n\n' + linhas + '\n\nTotal: ' + moeda(soma) + '\n\nPodemos combinar a data?';
-    enviar.href = 'https://wa.me/' + ZAP + '?text=' + encodeURIComponent(msg);
     bandeja.classList.add('aberta');
   }
 
@@ -906,6 +1157,7 @@ footer .marca-rodape{
 
   function ajustaQtd(cartao, delta){
     var stepper = cartao.querySelector('.stepper-card');
+    var rodape = cartao.querySelector('.prato-rodape');
     var nome = stepper.dataset.nome;
     var preco = parseFloat(stepper.dataset.preco);
     var qtdEl = stepper.querySelector('.qtd');
@@ -920,6 +1172,7 @@ footer .marca-rodape{
     item.qtd = Math.max(0, Math.min(20, item.qtd + delta));
     qtdEl.textContent = item.qtd;
     cartao.classList.toggle('no-carrinho', item.qtd > 0);
+    rodape.classList.toggle('ativo', item.qtd > 0);
 
     if(item.qtd === 0){
       var i = itens.indexOf(item);
@@ -929,6 +1182,7 @@ footer .marca-rodape{
   }
 
   document.querySelectorAll('.prato').forEach(function(cartao){
+    cartao.querySelector('.btn-encomendar').addEventListener('click', function(){ ajustaQtd(cartao, 1); });
     cartao.querySelector('.stepper-card .inc').addEventListener('click', function(){ ajustaQtd(cartao, 1); });
     cartao.querySelector('.stepper-card .dec').addEventListener('click', function(){ ajustaQtd(cartao, -1); });
   });
@@ -937,6 +1191,7 @@ footer .marca-rodape{
     itens = [];
     document.querySelectorAll('.prato').forEach(function(cartao){
       cartao.classList.remove('no-carrinho');
+      cartao.querySelector('.prato-rodape').classList.remove('ativo');
       cartao.querySelector('.stepper-card .qtd').textContent = '0';
     });
     atualizar();
@@ -1016,6 +1271,122 @@ footer .marca-rodape{
     window.addEventListener('resize', mover, {passive:true});
     mover();
   }
+  /* ============ CHECKOUT ============ */
+  var checkoutModal = document.getElementById('checkoutModal');
+  var checkoutItensEl = document.getElementById('checkoutItens');
+  var checkoutErro = document.getElementById('checkoutErro');
+  var receberEscolhido = null;
+  var pagamentoEscolhido = null;
+
+  function abreCheckout(){
+    if(!itens.length) return;
+    var soma = itens.reduce(function(s,i){ return s + i.preco * i.qtd; }, 0);
+    var linhas = itens.map(function(i){
+      return '<div class="checkout-item-linha"><span>' + (i.qtd > 1 ? '<b>' + i.qtd + 'x</b> ' : '') + i.nome + '</span><span>' + moeda(i.preco * i.qtd) + '</span></div>';
+    }).join('');
+    checkoutItensEl.innerHTML = linhas + '<div class="checkout-total-linha"><span>Total</span><span>' + moeda(soma) + '</span></div>';
+    checkoutModal.classList.add('aberto');
+    checkoutModal.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+  }
+  function fechaCheckout(){
+    checkoutModal.classList.remove('aberto');
+    checkoutModal.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('enviar').addEventListener('click', abreCheckout);
+  checkoutModal.querySelectorAll('[data-fecha-checkout]').forEach(function(el){
+    el.addEventListener('click', fechaCheckout);
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && checkoutModal.classList.contains('aberto')) fechaCheckout();
+  });
+
+  /* como prefere receber */
+  var camposEntrega = document.getElementById('camposEntrega');
+  document.querySelectorAll('.opcao-grande[data-receber]').forEach(function(botao){
+    botao.addEventListener('click', function(){
+      document.querySelectorAll('.opcao-grande[data-receber]').forEach(function(b){ b.classList.remove('selecionada'); });
+      botao.classList.add('selecionada');
+      receberEscolhido = botao.dataset.receber;
+      camposEntrega.classList.toggle('aberta', receberEscolhido === 'entrega');
+    });
+  });
+
+  /* forma de pagamento */
+  var campoTroco = document.getElementById('campoTroco');
+  document.querySelectorAll('.opcao-pequena[data-pagamento]').forEach(function(botao){
+    botao.addEventListener('click', function(){
+      document.querySelectorAll('.opcao-pequena[data-pagamento]').forEach(function(b){ b.classList.remove('selecionada'); });
+      botao.classList.add('selecionada');
+      pagamentoEscolhido = botao.dataset.pagamento;
+      campoTroco.classList.toggle('aberta', pagamentoEscolhido === 'Dinheiro');
+    });
+  });
+
+  document.getElementById('btnCheckoutEnviar').addEventListener('click', function(){
+    var nome = document.getElementById('checkoutNome').value.trim();
+    var obs = document.getElementById('checkoutObs').value.trim();
+
+    if(!nome){
+      checkoutErro.textContent = 'Falta seu nome, pra Bia saber quem está pedindo.';
+      checkoutErro.classList.add('mostrar');
+      return;
+    }
+    if(!receberEscolhido){
+      checkoutErro.textContent = 'Escolha se prefere retirar ou receber por entrega.';
+      checkoutErro.classList.add('mostrar');
+      return;
+    }
+    if(!pagamentoEscolhido){
+      checkoutErro.textContent = 'Escolha a forma de pagamento.';
+      checkoutErro.classList.add('mostrar');
+      return;
+    }
+    checkoutErro.classList.remove('mostrar');
+
+    var soma = itens.reduce(function(s,i){ return s + i.preco * i.qtd; }, 0);
+    var linhasPedido = itens.map(function(i){
+      return '• ' + (i.qtd > 1 ? i.qtd + 'x ' : '') + i.nome + ' (' + moeda(i.preco * i.qtd) + ')';
+    }).join('\n');
+
+    var partes = [];
+    partes.push('Oi Beatriz! Vi o site e quero encomendar:');
+    partes.push('');
+    partes.push(linhasPedido);
+    partes.push('');
+    partes.push('Total: ' + moeda(soma));
+    partes.push('');
+    partes.push('Nome: ' + nome);
+
+    if(receberEscolhido === 'entrega'){
+      var endereco = document.getElementById('checkoutEndereco').value.trim();
+      var bairro = document.getElementById('checkoutBairro').value.trim();
+      var referencia = document.getElementById('checkoutReferencia').value.trim();
+      partes.push('Entrega: sim');
+      if(endereco) partes.push('Endereço: ' + endereco);
+      if(bairro) partes.push('Bairro: ' + bairro);
+      if(referencia) partes.push('Ponto de referência: ' + referencia);
+    } else {
+      partes.push('Retirada no local');
+    }
+
+    partes.push('Pagamento: ' + pagamentoEscolhido);
+    if(pagamentoEscolhido === 'Dinheiro'){
+      var troco = document.getElementById('checkoutTroco').value.trim();
+      partes.push('Troco: ' + (troco || 'não precisa'));
+    }
+
+    if(obs) { partes.push(''); partes.push('Observação: ' + obs); }
+
+    partes.push('');
+    partes.push('Podemos combinar a data?');
+
+    var msg = partes.join('\n');
+    window.open('https://wa.me/' + ZAP + '?text=' + encodeURIComponent(msg), '_blank');
+  });
+
 })();
 </script>
 </body>
