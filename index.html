@@ -523,16 +523,16 @@ footer .marca-rodape{
 /* ---------- ASSINATURA DO DESENVOLVEDOR ---------- */
 .assinatura-dev{
   display:block;text-align:center;background:var(--cream);
-  margin:0;padding:.85rem 1.2rem calc(.85rem + 88px);
-  font-size:.72rem;color:rgba(94,48,35,.5);
+  margin:0;padding:.35rem 1rem;line-height:1.4;
+  font-size:.62rem;color:rgba(94,48,35,.38);
   font-family:'Plus Jakarta Sans',sans-serif;
 }
 .assinatura-dev a{
-  color:var(--coffee);font-weight:600;text-decoration:none;
-  border-bottom:1px solid rgba(137,87,55,.35);
-  transition:color .2s ease,border-color .2s ease;
+  color:rgba(94,48,35,.55);font-weight:700;text-decoration:underline;
+  text-underline-offset:2px;
+  transition:color .2s ease;
 }
-.assinatura-dev a:hover{color:var(--brownie);border-color:var(--brownie)}
+.assinatura-dev a:hover{color:var(--brownie)}
 
 /* ---------- BANDEJA ---------- */
 .bandeja{
@@ -623,7 +623,6 @@ footer .marca-rodape{
   .bandeja .btn{width:100%}
   .flutuante{width:50px;height:50px;right:16px;bottom:96px}
   .flutuante svg{width:24px;height:24px}
-  .assinatura-dev{padding-bottom:calc(.85rem + 150px)}
 }
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
